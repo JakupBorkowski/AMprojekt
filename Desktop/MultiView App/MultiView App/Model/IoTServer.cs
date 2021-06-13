@@ -802,5 +802,32 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
+
+        //SEKCJA ODPOWIEDZIALNA ZA JOYSTICK
+        private string GetJoystickUri()
+        {
+            return "http://localhost/datajoystick.json";
+        }
+        public async Task<string> GETJoystick()
+        {
+            string responseText = null;
+
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    responseText = await client.GetStringAsync(GetJoystickUri());
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+
+
+            }
+
+            return responseText;
+        }
     }
 }
