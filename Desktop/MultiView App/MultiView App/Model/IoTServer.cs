@@ -14,11 +14,12 @@ namespace MultiViewApp.Model
     public class IoTServer
     {
         private string ip;
+        private string port;
 
-
-        public IoTServer(string _ip)
+        public IoTServer(string _ip, string _port)
         {
             ip = _ip;
+            port = _port;
         }
 
         /**
@@ -53,51 +54,112 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
+        private string GetFileUrl9()
+        {
+            return "http://" + ip + "/chartdata_desktop6.json";
+        }
+        private string GetFileUrl8()
+        {
+            return "http://" + ip + "/chartdata_desktop5.json";
+        }
+        private string GetFileUrl7()
+        {
+            return "http://" + ip + "/chartdata_desktop4.json";
+        }
         /**
          * @brief obtaining the address of the data file from IoT server IP.
          */
         private string GetFileUrl()
         {
-            return "http://" + ip + "/server/chartdata_desktop.json";
+            return "http://" + ip + "/chartdata_desktop.json";
         }
         //funkcja stworzona przeze mnie używana do pobrania danych z pliku potrzebnych do umieszczenia na wykresie
         private string GetFileUrl2()
         {
-            return "http://" + ip + "/server/chartdata_desktop2.json";
+            return "http://" + ip + "/chartdata_desktop2.json";
         }
 
         //funkcja stworzona przeze mnie używana do pobrania danych z pliku potrzebnych do umieszczenia na wykresie
         private string GetFileUrl3()
         {
-            return "http://" + ip + "/server/chartdata_desktop2.json";
+            return "http://" + ip + "/chartdata_desktop3.json";
         }
 
-        //funkcja stworzona przeze mnie używana do pobrania danych z pliku potrzebnych do umieszczenia na wykresie
-        private string GetFileUrl4()
-        {
-            return "http://" + ip + "/server/chartdata_desktop2.json";
-        }
-
-        //funkcja stworzona przeze mnie używana do pobrania danych z pliku potrzebnych do umieszczenia na wykresie
-        private string GetFileUrl5()
-        {
-            return "http://" + ip + "/server/chartdata_desktop2.json";
-        }
-
-        //funkcja stworzona przeze mnie używana do pobrania danych z pliku potrzebnych do umieszczenia na wykresie
-        private string GetFileUrl6()
-        {
-            return "http://" + ip + "/server/chartdata_desktop2.json";
-        }
+        
 
         /**
          * @brief obtaining the address of the PHP script from IoT server IP.
          */
         private string GetScriptUrl()
         {
-            return "http://" + ip + "/server/resource_desktop.php";
+            return "http://" + ip + "/projektAM/resource_desktop.php";
         }
 
+
+        /**
+         * @brief HTTP GET request using HttpClient
+         */
+        public async Task<string> GETwithClient9()
+        {
+            string responseText = null;
+
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    responseText = await client.GetStringAsync(GetFileUrl9());
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
+        /**
+         * @brief HTTP GET request using HttpClient
+         */
+        public async Task<string> GETwithClient8()
+        {
+            string responseText = null;
+
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    responseText = await client.GetStringAsync(GetFileUrl8());
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
+
+        public async Task<string> GETwithClient7()
+        {
+            string responseText = null;
+
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    responseText = await client.GetStringAsync(GetFileUrl7());
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
         /**
           * @brief HTTP GET request using HttpClient
           */
@@ -166,10 +228,11 @@ namespace MultiViewApp.Model
             return responseText;
         }
 
+
         /**
-         * funkcja stworzona przeze mnie potrzebna do rysowania danych (pobieranie jsona)
+          * @brief HTTP POST request using HttpClient
          */
-        public async Task<string> GETwithClient4()
+        public async Task<string> POSTwithClient9()
         {
             string responseText = null;
 
@@ -177,7 +240,43 @@ namespace MultiViewApp.Model
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    responseText = await client.GetStringAsync(GetFileUrl4());
+                    // POST request data
+                    var requestDataCollection = new List<KeyValuePair<string, string>>();
+                    requestDataCollection.Add(new KeyValuePair<string, string>("filename", "chartdata_desktop6"));
+                    var requestData = new FormUrlEncodedContent(requestDataCollection);
+                    // Sent POST request
+                    var result = await client.PostAsync(GetScriptUrl(), requestData);
+                    // Read response content
+                    responseText = await result.Content.ReadAsStringAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
+        /**
+          * @brief HTTP POST request using HttpClient
+         */
+        public async Task<string> POSTwithClient8()
+        {
+            string responseText = null;
+
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    // POST request data
+                    var requestDataCollection = new List<KeyValuePair<string, string>>();
+                    requestDataCollection.Add(new KeyValuePair<string, string>("filename", "chartdata_desktop5"));
+                    var requestData = new FormUrlEncodedContent(requestDataCollection);
+                    // Sent POST request
+                    var result = await client.PostAsync(GetScriptUrl(), requestData);
+                    // Read response content
+                    responseText = await result.Content.ReadAsStringAsync();
                 }
             }
             catch (Exception e)
@@ -190,9 +289,9 @@ namespace MultiViewApp.Model
         }
 
         /**
-         * funkcja stworzona przeze mnie potrzebna do rysowania danych (pobieranie jsona)
+          * @brief HTTP POST request using HttpClient
          */
-        public async Task<string> GETwithClient5()
+        public async Task<string> POSTwithClient7()
         {
             string responseText = null;
 
@@ -200,7 +299,14 @@ namespace MultiViewApp.Model
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    responseText = await client.GetStringAsync(GetFileUrl5());
+                    // POST request data
+                    var requestDataCollection = new List<KeyValuePair<string, string>>();
+                    requestDataCollection.Add(new KeyValuePair<string, string>("filename", "chartdata_desktop4"));
+                    var requestData = new FormUrlEncodedContent(requestDataCollection);
+                    // Sent POST request
+                    var result = await client.PostAsync(GetScriptUrl(), requestData);
+                    // Read response content
+                    responseText = await result.Content.ReadAsStringAsync();
                 }
             }
             catch (Exception e)
@@ -211,30 +317,6 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
-
-        /**
-         * funkcja stworzona przeze mnie potrzebna do rysowania danych (pobieranie jsona)
-         */
-        public async Task<string> GETwithClient6()
-        {
-            string responseText = null;
-
-            try
-            {
-                using (HttpClient client = new HttpClient())
-                {
-                    responseText = await client.GetStringAsync(GetFileUrl6());
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine("NETWORK ERROR");
-                Debug.WriteLine(e);
-            }
-
-            return responseText;
-        }
-
         /**
           * @brief HTTP POST request using HttpClient
          */
@@ -302,7 +384,7 @@ namespace MultiViewApp.Model
                 {
                     // POST request data
                     var requestDataCollection = new List<KeyValuePair<string, string>>();
-                    requestDataCollection.Add(new KeyValuePair<string, string>("filename", "chartdata_desktop2"));
+                    requestDataCollection.Add(new KeyValuePair<string, string>("filename", "chartdata_desktop3"));
                     var requestData = new FormUrlEncodedContent(requestDataCollection);
                     // Sent POST request
                     var result = await client.PostAsync(GetScriptUrl(), requestData);
@@ -318,23 +400,24 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
-
-        public async Task<string> POSTwithClient4()
+        /**
+          * @brief HTTP GET request using HttpWebRequest
+          */
+        public async Task<string> GETwithRequest9()
         {
             string responseText = null;
 
             try
             {
-                using (HttpClient client = new HttpClient())
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl9());
+
+                request.Method = "GET";
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
                 {
-                    // POST request data
-                    var requestDataCollection = new List<KeyValuePair<string, string>>();
-                    requestDataCollection.Add(new KeyValuePair<string, string>("filename", "chartdata_desktop2"));
-                    var requestData = new FormUrlEncodedContent(requestDataCollection);
-                    // Sent POST request
-                    var result = await client.PostAsync(GetScriptUrl(), requestData);
-                    // Read response content
-                    responseText = await result.Content.ReadAsStringAsync();
+                    responseText = await reader.ReadToEndAsync();
                 }
             }
             catch (Exception e)
@@ -345,23 +428,24 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
-
-        public async Task<string> POSTwithClient5()
+        /**
+          * @brief HTTP GET request using HttpWebRequest
+          */
+        public async Task<string> GETwithRequest8()
         {
             string responseText = null;
 
             try
             {
-                using (HttpClient client = new HttpClient())
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl8());
+
+                request.Method = "GET";
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
                 {
-                    // POST request data
-                    var requestDataCollection = new List<KeyValuePair<string, string>>();
-                    requestDataCollection.Add(new KeyValuePair<string, string>("filename", "chartdata_desktop2"));
-                    var requestData = new FormUrlEncodedContent(requestDataCollection);
-                    // Sent POST request
-                    var result = await client.PostAsync(GetScriptUrl(), requestData);
-                    // Read response content
-                    responseText = await result.Content.ReadAsStringAsync();
+                    responseText = await reader.ReadToEndAsync();
                 }
             }
             catch (Exception e)
@@ -372,23 +456,21 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
-
-        public async Task<string> POSTwithClient6()
+        public async Task<string> GETwithRequest7()
         {
             string responseText = null;
 
             try
             {
-                using (HttpClient client = new HttpClient())
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl7());
+
+                request.Method = "GET";
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
                 {
-                    // POST request data
-                    var requestDataCollection = new List<KeyValuePair<string, string>>();
-                    requestDataCollection.Add(new KeyValuePair<string, string>("filename", "chartdata_desktop2"));
-                    var requestData = new FormUrlEncodedContent(requestDataCollection);
-                    // Sent POST request
-                    var result = await client.PostAsync(GetScriptUrl(), requestData);
-                    // Read response content
-                    responseText = await result.Content.ReadAsStringAsync();
+                    responseText = await reader.ReadToEndAsync();
                 }
             }
             catch (Exception e)
@@ -399,7 +481,6 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
-
         /**
           * @brief HTTP GET request using HttpWebRequest
           */
@@ -481,83 +562,8 @@ namespace MultiViewApp.Model
             return responseText;
         }
 
-        public async Task<string> GETwithRequest4()
-        {
-            string responseText = null;
 
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl4());
-
-                request.Method = "GET";
-
-                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    responseText = await reader.ReadToEndAsync();
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine("NETWORK ERROR");
-                Debug.WriteLine(e);
-            }
-
-            return responseText;
-        }
-
-        public async Task<string> GETwithRequest5()
-        {
-            string responseText = null;
-
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl5());
-
-                request.Method = "GET";
-
-                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    responseText = await reader.ReadToEndAsync();
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine("NETWORK ERROR");
-                Debug.WriteLine(e);
-            }
-
-            return responseText;
-        }
-
-        public async Task<string> GETwithRequest6()
-        {
-            string responseText = null;
-
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl6());
-
-                request.Method = "GET";
-
-                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    responseText = await reader.ReadToEndAsync();
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine("NETWORK ERROR");
-                Debug.WriteLine(e);
-            }
-
-            return responseText;
-        }
+       
         /**
           * @brief HTTP POST request using HttpWebRequest
           */
@@ -596,7 +602,120 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
+        /**
+          * @brief HTTP POST request using HttpWebRequest
+          */
+        public async Task<string> POSTwithRequest7()
+        {
+            string responseText = null;
 
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetScriptUrl());
+
+                // POST Request data 
+                var requestData = "filename=chartdata_desktop4";
+                byte[] byteArray = Encoding.UTF8.GetBytes(requestData);
+                // POST Request configuration
+                request.Method = "POST";
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentLength = byteArray.Length;
+                // Wrire data to request stream
+                Stream dataStream = request.GetRequestStream();
+                dataStream.Write(byteArray, 0, byteArray.Length);
+                dataStream.Close();
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    responseText = await reader.ReadToEndAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
+        /**
+          * @brief HTTP POST request using HttpWebRequest
+          */
+        public async Task<string> POSTwithRequest8()
+        {
+            string responseText = null;
+
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetScriptUrl());
+
+                // POST Request data 
+                var requestData = "filename=chartdata_desktop5";
+                byte[] byteArray = Encoding.UTF8.GetBytes(requestData);
+                // POST Request configuration
+                request.Method = "POST";
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentLength = byteArray.Length;
+                // Wrire data to request stream
+                Stream dataStream = request.GetRequestStream();
+                dataStream.Write(byteArray, 0, byteArray.Length);
+                dataStream.Close();
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    responseText = await reader.ReadToEndAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
+        /**
+          * @brief HTTP POST request using HttpWebRequest
+          */
+        public async Task<string> POSTwithRequest9()
+        {
+            string responseText = null;
+
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetScriptUrl());
+
+                // POST Request data 
+                var requestData = "filename=chartdata_desktop6";
+                byte[] byteArray = Encoding.UTF8.GetBytes(requestData);
+                // POST Request configuration
+                request.Method = "POST";
+                request.ContentType = "application/x-www-form-urlencoded";
+                request.ContentLength = byteArray.Length;
+                // Wrire data to request stream
+                Stream dataStream = request.GetRequestStream();
+                dataStream.Write(byteArray, 0, byteArray.Length);
+                dataStream.Close();
+
+                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    responseText = await reader.ReadToEndAsync();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("NETWORK ERROR");
+                Debug.WriteLine(e);
+            }
+
+            return responseText;
+        }
         public async Task<string> POSTwithRequest2()
         {
             string responseText = null;
@@ -642,7 +761,7 @@ namespace MultiViewApp.Model
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetScriptUrl());
 
                 // POST Request data 
-                var requestData = "filename=chartdata_desktop2";
+                var requestData = "filename=chartdata_desktop3";
                 byte[] byteArray = Encoding.UTF8.GetBytes(requestData);
                 // POST Request configuration
                 request.Method = "POST";
@@ -668,118 +787,12 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
-        public async Task<string> POSTwithRequest4()
-        {
-            string responseText = null;
-
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetScriptUrl());
-
-                // POST Request data 
-                var requestData = "filename=chartdata_desktop2";
-                byte[] byteArray = Encoding.UTF8.GetBytes(requestData);
-                // POST Request configuration
-                request.Method = "POST";
-                request.ContentType = "application/x-www-form-urlencoded";
-                request.ContentLength = byteArray.Length;
-                // Wrire data to request stream
-                Stream dataStream = request.GetRequestStream();
-                dataStream.Write(byteArray, 0, byteArray.Length);
-                dataStream.Close();
-
-                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    responseText = await reader.ReadToEndAsync();
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine("NETWORK ERROR");
-                Debug.WriteLine(e);
-            }
-
-            return responseText;
-        }
-
-        public async Task<string> POSTwithRequest5()
-        {
-            string responseText = null;
-
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetScriptUrl());
-
-                // POST Request data 
-                var requestData = "filename=chartdata_desktop2";
-                byte[] byteArray = Encoding.UTF8.GetBytes(requestData);
-                // POST Request configuration
-                request.Method = "POST";
-                request.ContentType = "application/x-www-form-urlencoded";
-                request.ContentLength = byteArray.Length;
-                // Wrire data to request stream
-                Stream dataStream = request.GetRequestStream();
-                dataStream.Write(byteArray, 0, byteArray.Length);
-                dataStream.Close();
-
-                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    responseText = await reader.ReadToEndAsync();
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine("NETWORK ERROR");
-                Debug.WriteLine(e);
-            }
-
-            return responseText;
-        }
-
-        public async Task<string> POSTwithRequest6()
-        {
-            string responseText = null;
-
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetScriptUrl());
-
-                // POST Request data 
-                var requestData = "filename=chartdata_desktop2";
-                byte[] byteArray = Encoding.UTF8.GetBytes(requestData);
-                // POST Request configuration
-                request.Method = "POST";
-                request.ContentType = "application/x-www-form-urlencoded";
-                request.ContentLength = byteArray.Length;
-                // Wrire data to request stream
-                Stream dataStream = request.GetRequestStream();
-                dataStream.Write(byteArray, 0, byteArray.Length);
-                dataStream.Close();
-
-                using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    responseText = await reader.ReadToEndAsync();
-                }
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine("NETWORK ERROR");
-                Debug.WriteLine(e);
-            }
-
-            return responseText;
-        }
+        
 
         //SEKCJA ODPOWIEDZIALNA ZA LISTE
         private string GetDataUri()
         {
-            return "http://localhost/datalist.json";
+            return "http://192.168.56.15"+"/datalist.json";
         }
         public async Task<string> GETData()
         {
@@ -806,7 +819,7 @@ namespace MultiViewApp.Model
         //SEKCJA ODPOWIEDZIALNA ZA JOYSTICK
         private string GetJoystickUri()
         {
-            return "http://localhost/datajoystick.json";
+            return "http://"+ip+"/datajoystick.json";
         }
         public async Task<string> GETJoystick()
         {

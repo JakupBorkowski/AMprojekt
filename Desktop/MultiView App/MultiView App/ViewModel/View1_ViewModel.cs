@@ -37,6 +37,22 @@ namespace MultiViewApp.ViewModel
                 }
             }
         }
+        private string ipPort;
+        public string IpPort
+        {
+            get
+            {
+                return ipPort;
+            }
+            set
+            {
+                if (ipPort != value)
+                {
+                    ipPort = value;
+                    OnPropertyChanged("IpPort");
+                }
+            }
+        }
         private int sampleTime;
         public string SampleTime
         {
@@ -60,9 +76,10 @@ namespace MultiViewApp.ViewModel
         public PlotModel DataPlotModel { get; set; }
         public PlotModel DataPlotModel2 { get; set; } //zmienna, którą dodałem potrzebna, żeby narysować wykres
         public PlotModel DataPlotModel3 { get; set; }
-        public PlotModel DataPlotModel4 { get; set; }
-        public PlotModel DataPlotModel5 { get; set; }
-        public PlotModel DataPlotModel6 { get; set; }
+        public PlotModel DataPlotModel7 { get; set; }
+        public PlotModel DataPlotModel8 { get; set; }
+        public PlotModel DataPlotModel9 { get; set; }
+
         public ButtonCommand StartButton { get; set; }
         public ButtonCommand StopButton { get; set; }
         public ButtonCommand UpdateConfigButton { get; set; }
@@ -78,6 +95,79 @@ namespace MultiViewApp.ViewModel
 
         public View1_ViewModel()
         {
+            //poczatek9
+            DataPlotModel9 = new PlotModel { Title = "ROLL" };
+
+            DataPlotModel9.Axes.Add(new LinearAxis()
+            {
+                Position = AxisPosition.Bottom,
+                Minimum = 0,
+                Maximum = config.XAxisMax,
+                Key = "Horizontal",
+                Unit = "sec",
+                Title = "Time"
+            });
+            DataPlotModel9.Axes.Add(new LinearAxis()
+            {
+                Position = AxisPosition.Left,
+                Minimum = -2,
+                Maximum = 365,
+                Key = "Vertical",
+                Unit = "%",
+                Title = "Roll"
+            });
+            DataPlotModel9.Series.Add(new LineSeries() { Title = "random humidity series", Color = OxyColor.Parse("#FFFF0000") });
+            //koniec9
+
+            //poczatek8
+            DataPlotModel8 = new PlotModel { Title = "PITCH" };
+
+            DataPlotModel8.Axes.Add(new LinearAxis()
+            {
+                Position = AxisPosition.Bottom,
+                Minimum = 0,
+                Maximum = config.XAxisMax,
+                Key = "Horizontal",
+                Unit = "sec",
+                Title = "Time"
+            });
+            DataPlotModel8.Axes.Add(new LinearAxis()
+            {
+                Position = AxisPosition.Left,
+                Minimum = -2,
+                Maximum = 365,
+                Key = "Vertical",
+                Unit = "%",
+                Title = "Pitch"
+            });
+            DataPlotModel8.Series.Add(new LineSeries() { Title = "random humidity series", Color = OxyColor.Parse("#FFFF0000") });
+            //koniec8
+
+
+            //poczatek 7
+            DataPlotModel7 = new PlotModel { Title = "YAW" };
+
+            DataPlotModel7.Axes.Add(new LinearAxis()
+            {
+                Position = AxisPosition.Bottom,
+                Minimum = 0,
+                Maximum = config.XAxisMax,
+                Key = "Horizontal",
+                Unit = "sec",
+                Title = "Time"
+            });
+            DataPlotModel7.Axes.Add(new LinearAxis()
+            {
+                Position = AxisPosition.Left,
+                Minimum = -2,
+                Maximum = 365,
+                Key = "Vertical",
+                Unit = "%",
+                Title = "Yaw"
+            });
+            DataPlotModel7.Series.Add(new LineSeries() { Title = "random humidity series", Color = OxyColor.Parse("#FFFF0000") });
+            //end of 7th plot
+
             DataPlotModel = new PlotModel { Title = "HUMIDITY" };
 
             DataPlotModel.Axes.Add(new LinearAxis()
@@ -92,8 +182,8 @@ namespace MultiViewApp.ViewModel
             DataPlotModel.Axes.Add(new LinearAxis()
             {
                 Position = AxisPosition.Left,
-                Minimum = 0,
-                Maximum = 100,
+                Minimum = -2,
+                Maximum = 105,
                 Key = "Vertical",
                 Unit = "%",
                 Title = "Humidity"
@@ -115,8 +205,8 @@ namespace MultiViewApp.ViewModel
             DataPlotModel2.Axes.Add(new LinearAxis()
             {
                 Position = AxisPosition.Left,
-                Minimum = -30,
-                Maximum = 105,
+                Minimum = -32,
+                Maximum = 107,
                 Key = "Vertical",
                 Unit = "*C",
                 Title = "Temperature"
@@ -139,87 +229,16 @@ namespace MultiViewApp.ViewModel
             DataPlotModel3.Axes.Add(new LinearAxis()
             {
                 Position = AxisPosition.Left,
-                Minimum = 260,
-                Maximum = 1260,
+                Minimum = 250,
+                Maximum = 1270,
                 Key = "Vertical",
                 Unit = "mbar",
-                Title = "Temperature"
+                Title = "Pressure"
             });
             DataPlotModel3.Series.Add(new LineSeries() { Title = "random pressure series", Color = OxyColor.Parse("#FFFF0000") });
             //end of 3rd plot
 
-            //4th plot (dodane przeze mnie)
-            DataPlotModel4 = new PlotModel { Title = "YAW" };
-
-            DataPlotModel4.Axes.Add(new LinearAxis()
-            {
-                Position = AxisPosition.Bottom,
-                Minimum = 0,
-                Maximum = config.XAxisMax,
-                Key = "Horizontal",
-                Unit = "sec",
-                Title = "Time"
-            });
-            DataPlotModel4.Axes.Add(new LinearAxis()
-            {
-                Position = AxisPosition.Left,
-                Minimum = 0,
-                Maximum = 360,
-                Key = "Vertical",
-                Unit = "degree",
-                Title = "Yaw"
-            });
-            DataPlotModel4.Series.Add(new LineSeries() { Title = "random yaw series", Color = OxyColor.Parse("#FFFF0000") });
-            //end of 4th plot
-
-            //5th plot (dodane przeze mnie)
-            DataPlotModel5 = new PlotModel { Title = "PITCH" };
-
-            DataPlotModel5.Axes.Add(new LinearAxis()
-            {
-                Position = AxisPosition.Bottom,
-                Minimum = 0,
-                Maximum = config.XAxisMax,
-                Key = "Horizontal",
-                Unit = "sec",
-                Title = "Time"
-            });
-            DataPlotModel5.Axes.Add(new LinearAxis()
-            {
-                Position = AxisPosition.Left,
-                Minimum = 0,
-                Maximum = 360,
-                Key = "Vertical",
-                Unit = "degree",
-                Title = "Pitch"
-            });
-            DataPlotModel5.Series.Add(new LineSeries() { Title = "random pitch series", Color = OxyColor.Parse("#FFFF0000") });
-            //end of 5th plot
-
-            //6th plot (dodane przeze mnie)
-            DataPlotModel6 = new PlotModel { Title = "ROLL" };
-
-            DataPlotModel6.Axes.Add(new LinearAxis()
-            {
-                Position = AxisPosition.Bottom,
-                Minimum = 0,
-                Maximum = config.XAxisMax,
-                Key = "Horizontal",
-                Unit = "sec",
-                Title = "Time"
-            });
-            DataPlotModel6.Axes.Add(new LinearAxis()
-            {
-                Position = AxisPosition.Left,
-                Minimum = 0,
-                Maximum = 360,
-                Key = "Vertical",
-                Unit = "degree",
-                Title = "Roll"
-            });
-            DataPlotModel6.Series.Add(new LineSeries() { Title = "random roll series", Color = OxyColor.Parse("#FFFF0000") });
-            //end of 6th plot
-
+           
 
 
             StartButton = new ButtonCommand(StartTimer);
@@ -228,11 +247,73 @@ namespace MultiViewApp.ViewModel
             DefaultConfigButton = new ButtonCommand(DefaultConfig);
 
             ipAddress = config.IpAddress;
+            ipPort = config.IpPort;
             sampleTime = config.SampleTime;
 
-            Server = new IoTServer(IpAddress);
+            Server = new IoTServer(IpAddress,IpPort);
+        }
+        /**
+         * @brief Time series plot update procedure.
+         * @param t X axis data: Time stamp [ms].
+         * @param d Y axis data: Real-time measurement [-].
+         */
+        private void UpdatePlot9(double t, double d)
+        {
+            LineSeries lineSeries = DataPlotModel9.Series[0] as LineSeries;
+
+            lineSeries.Points.Add(new DataPoint(t, d));
+
+            if (lineSeries.Points.Count > config.MaxSamples)
+                lineSeries.Points.RemoveAt(0);
+
+            if (t >= config.XAxisMax)
+            {
+                DataPlotModel9.Axes[0].Minimum = (t - config.XAxisMax);
+                DataPlotModel9.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
+            }
+
+            DataPlotModel9.InvalidatePlot(true);
+        }
+        /**
+         * @brief Time series plot update procedure.
+         * @param t X axis data: Time stamp [ms].
+         * @param d Y axis data: Real-time measurement [-].
+         */
+        private void UpdatePlot8(double t, double d)
+        {
+            LineSeries lineSeries = DataPlotModel8.Series[0] as LineSeries;
+
+            lineSeries.Points.Add(new DataPoint(t, d));
+
+            if (lineSeries.Points.Count > config.MaxSamples)
+                lineSeries.Points.RemoveAt(0);
+
+            if (t >= config.XAxisMax)
+            {
+                DataPlotModel8.Axes[0].Minimum = (t - config.XAxisMax);
+                DataPlotModel8.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
+            }
+
+            DataPlotModel8.InvalidatePlot(true);
         }
 
+        private void UpdatePlot7(double t, double d)
+        {
+            LineSeries lineSeries = DataPlotModel7.Series[0] as LineSeries;
+
+            lineSeries.Points.Add(new DataPoint(t, d));
+
+            if (lineSeries.Points.Count > config.MaxSamples)
+                lineSeries.Points.RemoveAt(0);
+
+            if (t >= config.XAxisMax)
+            {
+                DataPlotModel7.Axes[0].Minimum = (t - config.XAxisMax);
+                DataPlotModel7.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
+            }
+
+            DataPlotModel7.InvalidatePlot(true);
+        }
         /**
           * @brief Time series plot update procedure.
           * @param t X axis data: Time stamp [ms].
@@ -244,7 +325,7 @@ namespace MultiViewApp.ViewModel
 
             lineSeries.Points.Add(new DataPoint(t, d));
 
-            if (lineSeries.Points.Count > config.MaxSampleNumber)
+            if (lineSeries.Points.Count > config.MaxSamples)
                 lineSeries.Points.RemoveAt(0);
 
             if (t >= config.XAxisMax)
@@ -265,7 +346,7 @@ namespace MultiViewApp.ViewModel
 
             lineSeries.Points.Add(new DataPoint(t, d));
 
-            if (lineSeries.Points.Count > config.MaxSampleNumber)
+            if (lineSeries.Points.Count > config.MaxSamples)
                 lineSeries.Points.RemoveAt(0);
 
             if (t >= config.XAxisMax)
@@ -286,7 +367,7 @@ namespace MultiViewApp.ViewModel
 
             lineSeries.Points.Add(new DataPoint(t, d));
 
-            if (lineSeries.Points.Count > config.MaxSampleNumber)
+            if (lineSeries.Points.Count > config.MaxSamples)
                 lineSeries.Points.RemoveAt(0);
 
             if (t >= config.XAxisMax)
@@ -298,68 +379,7 @@ namespace MultiViewApp.ViewModel
             DataPlotModel3.InvalidatePlot(true);
         }
 
-        /**
-         *FUNKCJA STWORZONA PRZEZE MNIE ODPOWIEDZIALNA ZA ODŚWIEŻANIE WYKRESU
-         */
-        private void UpdatePlot4(double t, double d)
-        {
-            LineSeries lineSeries = DataPlotModel4.Series[0] as LineSeries;
-
-            lineSeries.Points.Add(new DataPoint(t, d));
-
-            if (lineSeries.Points.Count > config.MaxSampleNumber)
-                lineSeries.Points.RemoveAt(0);
-
-            if (t >= config.XAxisMax)
-            {
-                DataPlotModel4.Axes[0].Minimum = (t - config.XAxisMax);
-                DataPlotModel4.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
-            }
-
-            DataPlotModel4.InvalidatePlot(true);
-        }
-
-        /**
-          *FUNKCJA STWORZONA PRZEZE MNIE ODPOWIEDZIALNA ZA ODŚWIEŻANIE WYKRESU
-          */
-        private void UpdatePlot5(double t, double d)
-        {
-            LineSeries lineSeries = DataPlotModel5.Series[0] as LineSeries;
-
-            lineSeries.Points.Add(new DataPoint(t, d));
-
-            if (lineSeries.Points.Count > config.MaxSampleNumber)
-                lineSeries.Points.RemoveAt(0);
-
-            if (t >= config.XAxisMax)
-            {
-                DataPlotModel5.Axes[0].Minimum = (t - config.XAxisMax);
-                DataPlotModel5.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
-            }
-
-            DataPlotModel5.InvalidatePlot(true);
-        }
-
-        /**
-          *FUNKCJA STWORZONA PRZEZE MNIE ODPOWIEDZIALNA ZA ODŚWIEŻANIE WYKRESU
-          */
-        private void UpdatePlot6(double t, double d)
-        {
-            LineSeries lineSeries = DataPlotModel6.Series[0] as LineSeries;
-
-            lineSeries.Points.Add(new DataPoint(t, d));
-
-            if (lineSeries.Points.Count > config.MaxSampleNumber)
-                lineSeries.Points.RemoveAt(0);
-
-            if (t >= config.XAxisMax)
-            {
-                DataPlotModel6.Axes[0].Minimum = (t - config.XAxisMax);
-                DataPlotModel6.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
-            }
-
-            DataPlotModel6.InvalidatePlot(true);
-        }
+       
 
         /**
           * @brief Asynchronous chart update procedure with
@@ -370,35 +390,36 @@ namespace MultiViewApp.ViewModel
         {
 #if CLIENT
 #if GET
+       
             string responseText = await Server.GETwithClient();
             string responseText2 = await Server.GETwithClient2();
             string responseText3 = await Server.GETwithClient3();
-            string responseText4 = await Server.GETwithClient4();
-            string responseText5 = await Server.GETwithClient5();
-            string responseText6 = await Server.GETwithClient6();
+            string responseText7 = await Server.GETwithClient7();
+            string responseText8 = await Server.GETwithClient8();
+            string responseText9 = await Server.GETwithClient9();
 #else
             string responseText = await Server.POSTwithClient();
             string responseText2 = await Server.POSTwithClient2();
             string responseText3 = await Server.POSTwithClient3();
-            string responseText4 = await Server.POSTwithClient4();
-            string responseText5 = await Server.POSTwithClient5();
-            string responseText6 = await Server.POSTwithClient6();
+            string responseText7 = await Server.GETwithClient7();
+            string responseText8 = await Server.GETwithClient8();
+            
 #endif
 #else
 #if GET
             string responseText = await Server.GETwithRequest();
             string responseText2 = await Server.GETwithRequest2();
             string responseText3 = await Server.GETwithRequest3();
-            string responseText4 = await Server.GETwithRequest4();
-            string responseText5 = await Server.GETwithRequest5();
-            string responseText6 = await Server.GETwithRequest6();
+            string responseText7 = await Server.GETwithClient7();
+            string responseText8 = await Server.GETwithClient8();
+            
 #else
             string responseText = await Server.POSTwithRequest();
             string responseText2 = await Server.POSTwithRequest2();
             string responseText3 = await Server.POSTwithRequest3();
-            string responseText4 = await Server.POSTwithRequest4();
-            string responseText5 = await Server.POSTwithRequest5();
-            string responseText6 = await Server.POSTwithRequest6();
+            string responseText7 = await Server.GETwithClient7();
+            string responseText8 = await Server.GETwithClient8();
+            
 #endif
 #endif
             try
@@ -408,19 +429,25 @@ namespace MultiViewApp.ViewModel
                 UpdatePlot(timeStamp / 1000.0, (double)resposneJson.data);
                 dynamic resposneJson2 = JObject.Parse(responseText2);
                 UpdatePlot2(timeStamp / 1000.0, (double)resposneJson2.data);
+                dynamic resposneJson3 = JObject.Parse(responseText3);
+                UpdatePlot3(timeStamp / 1000.0, (double)resposneJson3.data);
+                dynamic resposneJson7 = JObject.Parse(responseText7);
+                UpdatePlot7(timeStamp / 1000.0, (double)resposneJson7.data);
+                              
 #else
+                
                 ServerData resposneJson = JsonConvert.DeserializeObject<ServerData>(responseText);
                 UpdatePlot(timeStamp / 1000.0, resposneJson.data);
                 ServerData resposneJson2 = JsonConvert.DeserializeObject<ServerData>(responseText2);
                 UpdatePlot2(timeStamp / 1000.0, resposneJson2.data);
                 ServerData resposneJson3 = JsonConvert.DeserializeObject<ServerData>(responseText3);
                 UpdatePlot3(timeStamp / 1000.0, resposneJson3.data);
-                ServerData resposneJson4 = JsonConvert.DeserializeObject<ServerData>(responseText4);
-                UpdatePlot4(timeStamp / 1000.0, resposneJson4.data);
-                ServerData resposneJson5 = JsonConvert.DeserializeObject<ServerData>(responseText5);
-                UpdatePlot5(timeStamp / 1000.0, resposneJson5.data);
-                ServerData resposneJson6 = JsonConvert.DeserializeObject<ServerData>(responseText6);
-                UpdatePlot6(timeStamp / 1000.0, resposneJson6.data);
+                ServerData resposneJson7 = JsonConvert.DeserializeObject<ServerData>(responseText7);
+                UpdatePlot7(timeStamp / 1000.0, resposneJson7.data);
+                ServerData resposneJson8 = JsonConvert.DeserializeObject<ServerData>(responseText8);
+                UpdatePlot8(timeStamp / 1000.0, resposneJson8.data);
+                ServerData resposneJson9 = JsonConvert.DeserializeObject<ServerData>(responseText9);
+                UpdatePlot9(timeStamp / 1000.0, resposneJson9.data);
 #endif
             }
             catch (Exception e)
@@ -429,9 +456,9 @@ namespace MultiViewApp.ViewModel
                 Debug.WriteLine(responseText);
                 Debug.WriteLine(responseText2);
                 Debug.WriteLine(responseText3);
-                Debug.WriteLine(responseText4);
-                Debug.WriteLine(responseText5);
-                Debug.WriteLine(responseText6);
+                Debug.WriteLine(responseText7);
+                Debug.WriteLine(responseText8);
+                Debug.WriteLine(responseText9);
                 Debug.WriteLine(e);
             }
 
@@ -463,6 +490,11 @@ namespace MultiViewApp.ViewModel
 
                 DataPlotModel.ResetAllAxes();
                 DataPlotModel2.ResetAllAxes(); //analogiczne dodatnie resetu dla drugiego plota
+                DataPlotModel3.ResetAllAxes();
+               //analogiczne dodatnie resetu dla drugiego plota
+                DataPlotModel7.ResetAllAxes(); //analogiczne dodatnie resetu dla drugiego plota
+                DataPlotModel8.ResetAllAxes(); //analogiczne dodatnie resetu dla drugiego plota
+                DataPlotModel9.ResetAllAxes(); //analogiczne dodatnie resetu dla drugiego plota
             }
         }
 
@@ -489,7 +521,7 @@ namespace MultiViewApp.ViewModel
                 StopTimer();
 
             config = new ConfigParams(ipAddress, sampleTime);
-            Server = new IoTServer(IpAddress);
+            Server = new IoTServer(IpAddress,IpPort);
 
             if (restartTimer)
                 StartTimer();
@@ -507,8 +539,9 @@ namespace MultiViewApp.ViewModel
 
             config = new ConfigParams();
             IpAddress = config.IpAddress;
+            IpPort = config.IpPort;
             SampleTime = config.SampleTime.ToString();
-            Server = new IoTServer(IpAddress);
+            Server = new IoTServer(IpAddress, IpPort);
 
             if (restartTimer)
                 StartTimer();

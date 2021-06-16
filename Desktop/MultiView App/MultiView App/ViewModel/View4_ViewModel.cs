@@ -42,7 +42,7 @@ namespace MultiViewApp.ViewModel
         public View4_ViewModel()
         {
             _config = new ConfigParams();
-            _server = new IoTServer(_config.IpAddress);
+            _server = new IoTServer(_config.IpAddress, _config.IpPort);
             _dataList = null;
             StartCommand = new ButtonCommand(StartTransfer);
             StopCommand = new ButtonCommand(StopTransfer);

@@ -19,6 +19,7 @@ namespace MultiViewApp.ViewModel
         #region Fields
         private LedDisplayModel _disp;
         private IoTServer _server;
+        private ConfigParams config = new ConfigParams();
         #endregion Fields
 
         #region Properties
@@ -56,7 +57,7 @@ namespace MultiViewApp.ViewModel
         {
             /* MODELS */
             _disp = new LedDisplayModel();
-            _server = new IoTServer("localhost");
+            _server = new IoTServer(config.IpAddress,config.IpPort);
             SomeText = "Data not sent.";
 
             /* VIEWMODELS */

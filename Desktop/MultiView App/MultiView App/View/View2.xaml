@@ -36,17 +36,18 @@
                 HorizontalAlignment="Right" VerticalAlignment="Center"/>
         </Grid>
         <!-- Bottom button menu: start data acquisition / stop data acquisition / update configuration -->
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="544,180,0,0" TextWrapping="Wrap" Text="{Binding ipaddressText}" VerticalAlignment="Top" Width="254"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="544,242,0,0" TextWrapping="Wrap" Text="{Binding portText}" VerticalAlignment="Top" Width="254"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="544,306,0,0" TextWrapping="Wrap" Text="{Binding apiversionText}" VerticalAlignment="Top" Width="254"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="544,372,0,0" TextWrapping="Wrap" Text="{Binding tsText}" VerticalAlignment="Top" Width="254"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="544,14,0,0" TextWrapping="Wrap" Text="{Binding maxsampleText}" VerticalAlignment="Top" Width="254" Grid.Row="1"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="544,180,0,0" TextWrapping="Wrap" Text="{Binding IpAddress}" VerticalAlignment="Top" Width="254"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="544,242,0,0" TextWrapping="Wrap" Text="{Binding IpPort}" VerticalAlignment="Top" Width="254"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="544,306,0,0" TextWrapping="Wrap" Text="{Binding ApiVersion}" VerticalAlignment="Top" Width="254"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="544,372,0,0" TextWrapping="Wrap" Text="{Binding SampleTime}" VerticalAlignment="Top" Width="254"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="544,14,0,0" TextWrapping="Wrap" Text="{Binding MaxSamples}" VerticalAlignment="Top" Width="254" Grid.Row="1"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="414,187,0,0" TextWrapping="Wrap" Text="IP Address" FontSize="19" VerticalAlignment="Top"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="414,249,0,0" TextWrapping="Wrap" Text="Port" FontSize="19" VerticalAlignment="Top"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="414,313,0,0" TextWrapping="Wrap" Text="API version" FontSize="19" VerticalAlignment="Top" RenderTransformOrigin="0.551,0.031"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="414,379,0,0" TextWrapping="Wrap" Text="Ts" FontSize="19" VerticalAlignment="Top"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="414,21,0,0" TextWrapping="Wrap" Text="Max samples" FontSize="19" VerticalAlignment="Top" Grid.Row="1"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="494,113,0,0" TextWrapping="Wrap" Text="Configuration Menu" FontSize="25" VerticalAlignment="Top"/>
-        <Button Content="Submit" Grid.Column="1" HorizontalAlignment="Left" Margin="454,97,0,0" VerticalAlignment="Top" Command="{Binding ChangeParametersButton}" Width="317" Grid.Row="1"/>
+        <Button Content="Save Settings" Grid.Column="1" HorizontalAlignment="Left" Margin="414,97,0,0" VerticalAlignment="Top" Command="{Binding SaveButton}" Width="217" Grid.Row="1" Click="Button_Click"/>
+        <Button Content="Default Settings" Grid.Column="1" HorizontalAlignment="Left" Margin="676,97,0,0" VerticalAlignment="Top" Command="{Binding DefaultButton}" Width="217" Grid.Row="1"/>
     </Grid>
 </UserControl>

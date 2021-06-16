@@ -109,7 +109,7 @@ namespace MultiViewApp.ViewModel
             _isListening = false;
 
             _config = new ConfigParams();
-            _server = new IoTServer(_config.IpAddress);
+            _server = new IoTServer(_config.IpAddress,_config.IpPort);
             StartCommand = new ButtonCommand(StartListening);
             StopCommand = new ButtonCommand(StopListening);
 

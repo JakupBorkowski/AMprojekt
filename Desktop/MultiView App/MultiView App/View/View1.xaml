@@ -111,19 +111,19 @@
                       Grid.Row="4"
                           Margin="0,0,10,0"
                       Model="{Binding DataPlotModel3}"/>
-            <oxy:PlotView x:Name="RollPlotView"
+            <oxy:PlotView x:Name="YawPlotView2"
                       Grid.Row="5"
                           Margin="0,0,10,0"
-                      Model="{Binding DataPlotModel4}" />
-            <oxy:PlotView x:Name="PitchPlotView"
+                      Model="{Binding DataPlotModel7}"/>
+            <oxy:PlotView x:Name="PitchPlotView2"
                       Grid.Row="6"
                           Margin="0,0,10,0"
-                      Model="{Binding DataPlotModel5}"/>
-            <oxy:PlotView x:Name="YawPlotView"
+                      Model="{Binding DataPlotModel8}"/>
+            <oxy:PlotView x:Name="RollPlotView2"
                       Grid.Row="7"
                           Margin="0,0,10,0"
-                      Model="{Binding DataPlotModel6}"/>
-
+                      Model="{Binding DataPlotModel9}"/>
+            
 
 
 

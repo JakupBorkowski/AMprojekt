@@ -14,145 +14,142 @@ using System.IO;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Echovoice.JSON;
+using MultiViewApp.Model;
 namespace MultiViewApp.ViewModel
 {
-    public class View2_ViewModel : BaseViewModel
+    
+    class View2_ViewModel : BaseViewModel
     {
-        #region Properties      
-        private string _ipaddressText;
-        public string ipaddressText
+        #region Properties
+        private string ipAddress;
+        public string IpAddress
         {
             get
             {
-                return (_ipaddressText);
+                return ipAddress;
             }
             set
             {
-                if (value != _ipaddressText)
+                if (ipAddress != value)
                 {
-                    _ipaddressText = value;
-                    OnPropertyChanged("ipaddressText");
+                    ipAddress = value;
+                    OnPropertyChanged("IpAdress");
                 }
             }
         }
-        private string _portText;
-        public string portText
-        {
-            get
-            {
-                return (_portText);
-            }
-            set
-            {
-                if (value != _portText)
-                {
-                    _portText = value;
-                    OnPropertyChanged("portText");
-                }
-            }
-        }
-        private string _apiversionText;
-        public string apiversionText
-        {
-            get
-            {
-                return (_apiversionText);
-            }
-            set
-            {
-                if (value != _apiversionText)
-                {
-                    _apiversionText = value;
-                    OnPropertyChanged("apiversionText");
-                }
-            }
-        }
-        private string _tsText;
-        public string tsText
-        {
-            get
-            {
-                return (_tsText);
-            }
-            set
-            {
-                if (value != _tsText)
-                {
-                    _tsText = value;
-                    OnPropertyChanged("tsText");
-                }
-            }
-        }
-        private string _maxsampleText;
-        public string maxsampleText
-        {
-            get
-            {
-                return (_maxsampleText);
-            }
-            set
-            {
-                if (value != _maxsampleText)
-                {
-                    _maxsampleText = value;
-                    OnPropertyChanged("maxsampleText");
-                }
-            }
-        }
-        public ButtonCommand ChangeParametersButton { get; set; }  //!< 'Submit' button command
-        #endregion
 
+        private string ipPort;
+        public string IpPort
+        {
+            get
+            {
+                return ipPort;
+            }
+            set
+            {
+                if (ipPort != value)
+                {
+                    ipPort = value;
+                    OnPropertyChanged("IpPort");
+                }
+            }
+        }
+
+        private int sampleTime;
+        public string SampleTime
+        {
+            get
+            {
+                return sampleTime.ToString();
+            }
+            set
+            {
+                if (Int32.TryParse(value, out int st))
+                {
+                    if (sampleTime != st)
+                    {
+                        sampleTime = st;
+                        OnPropertyChanged("SampleTime");
+                    }
+                }
+            }
+        }
+        private int maxSamples;
+        public string MaxSamples
+        {
+            get
+            {
+                return maxSamples.ToString();
+            }
+            set
+            {
+                if (Int32.TryParse(value, out int ms))
+                {
+                    if (maxSamples != ms)
+                    {
+                        maxSamples = ms;
+                        OnPropertyChanged("MaxSamples");
+                    }
+                }
+            }
+        }
+        private string apiVersion;
+        public string ApiVersion
+        {
+            get
+            {
+                return apiVersion;
+            }
+            set
+            {
+                if (apiVersion != value)
+                {
+                    apiVersion = value;
+                    OnPropertyChanged("ApiValue");
+                }
+            }
+        }
+        public ButtonCommand SaveButton { get; set; }
+        public ButtonCommand DefaultButton { get; set; }
+        #endregion
         #region Fields
-        #endregion
+        private ConfigParams config = new ConfigParams();
 
+        #endregion
 
         public View2_ViewModel()
         {
-            ReadParameters();
-            ChangeParametersButton = new ButtonCommand(UpdateParameters);
+            ipAddress = config.IpAddress;
+            ipPort = config.IpPort;
+            sampleTime = config.SampleTime;
+            maxSamples = config.MaxSamples;
+            apiVersion = config.ApiVersion;
+
+            SaveButton = new ButtonCommand(SaveSettings);
+            DefaultButton = new ButtonCommand(DefaultSettings);
         }
 
-        /**
-          * @brief Time series plot update procedure.
-          * @param t X axis data: Time stamp [ms].
-          * @param d Y axis data: Real-time measurement [-].
-          */
-        private void UpdateParameters()
-        {      
-            string parametersToJson = "[" + ipaddressText.ToString() + "," + portText.ToString() + "," + apiversionText.ToString() + "," + tsText.ToString() + "," + maxsampleText.ToString() + "]";
-            System.IO.File.WriteAllText("jsonData.json", parametersToJson);
-        }
-        private void ReadParameters()
+        public void SaveSettings()
         {
-            if (File.Exists("jsonData.json"))
-            {
-                string jsonStringToRead = System.IO.File.ReadAllText("jsonData.json");
-                //string [] responseJson = JsonConvert.DeserializeObject<string[]>(jsonStringToRead);
-                string[] responseJson = JSONDecoders.DecodeJsStringArray(jsonStringToRead);
-                _ipaddressText = responseJson[0].ToString();
-                _portText = responseJson[1].ToString();
-                _apiversionText = responseJson[2].ToString();
-                _tsText = responseJson[3].ToString();
-                _maxsampleText = responseJson[4].ToString();
-            }
-
+            Debug.WriteLine("Save Button Works!");
+            config = new ConfigParams(ipAddress, ipPort, apiVersion, maxSamples, sampleTime);
+            config.SaveConfigToFile();
         }
-
-
-        #region PropertyChanged
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /**
-         * @brief Simple function to trigger event handler
-         * @params propertyName Name of ViewModel property as string
-         */
-        protected void OnPropertyChanged(string propertyName)
+        public void DefaultSettings()
         {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+            Console.WriteLine("Default Button Works!");
+            config.SetDefaultConfig();
+            config.SaveConfigToFile();
+
+            IpAddress = config.IpAddress;
+            IpPort = config.IpPort;
+            SampleTime = (config.SampleTime).ToString();
+            MaxSamples = (config.MaxSamples).ToString();
+            ApiVersion = config.ApiVersion;
+
+
         }
 
-        #endregion
+
     }
 }
