@@ -14,6 +14,9 @@ using System.Diagnostics;
 
 namespace MultiViewApp.ViewModel
 {
+    /** 
+     * @brief View model for View4_ViewModel.xaml 
+     */
     class View4_ViewModel : BaseViewModel
     {
         private IoTServer _server;
@@ -38,7 +41,9 @@ namespace MultiViewApp.ViewModel
         public ICommand StartCommand { get; set; }
         public ICommand StopCommand { get; set; }
         #endregion
-
+        /**
+         * @brief View4_ViewModel constructor
+         */
         public View4_ViewModel()
         {
             _config = new ConfigParams();

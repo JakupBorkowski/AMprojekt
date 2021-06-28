@@ -32,7 +32,9 @@ namespace MultiViewApp.Model
             }
             private set { }
         }
-
+        /**
+        * @brief Get server parameters from file constructor
+        */
         public ConfigParams()
         {
             if (File.Exists("jsonData.json"))
@@ -72,7 +74,14 @@ namespace MultiViewApp.Model
 
 
         }
-
+        /**
+        * @brief Server parameters constructor
+        * @params ip server ip
+        * @params _ipport server ip port
+        * @params _api app version
+        * @params _ms max number of samples
+        * @params _st sample time
+        */
         public ConfigParams(string _ip, string _ipport, string _api, int _ms, int _st)
         {
             IpAddress = _ip;
@@ -81,13 +90,20 @@ namespace MultiViewApp.Model
             MaxSamples = _ms;
             ApiVersion = _api;
         }
-
+        /**
+        * @brief Server parameters constructor
+        * @params ip server ip
+        * @params st sample time
+        */
         public ConfigParams(string ip, int st)
         {
             IpAddress = ip;
             SampleTime = st;
         }
 
+        /**
+        * @brief Get JSON object with config parameters procedure
+        */
         private JObject GetJsonObject()
         {
             JObject jsonObj = new JObject(
@@ -100,6 +116,9 @@ namespace MultiViewApp.Model
             return jsonObj;
 
         }
+        /**
+        * @brief Save config to file procedure
+        */
         public void SaveConfigToFile()
         {
             string output = JsonConvert.SerializeObject(GetJsonObject());
@@ -117,7 +136,9 @@ namespace MultiViewApp.Model
                 Debug.WriteLine(e);
             }
         }
-
+        /**
+        * @brief Set default config procedure
+        */
         public void SetDefaultConfig()
         {
             IpAddress = defaultIpAdress;

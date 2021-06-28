@@ -13,6 +13,9 @@ using System.Windows.Data;
 
 namespace MultiViewApp.ViewModel
 {
+    /** 
+     * @brief View model for View3_ViewModel.xaml 
+     */
     using Model;
     public class View3_ViewModel : BaseViewModel
     {
@@ -51,7 +54,7 @@ namespace MultiViewApp.ViewModel
         #endregion Properties
 
         /**
-         * @brief Defualt constructor
+         * @brief View3_ViewModel constructor
          */
         public View3_ViewModel()
         {
@@ -93,7 +96,9 @@ namespace MultiViewApp.ViewModel
             SendCommand = new ButtonCommand(SendRequestHandler);
             ClearCommand = new ButtonCommand(ClearRequestHandler);
         }
-
+        /**
+        * @brief Send status procedure.
+        */
         public void changeLed()
         {
             SomeText = "Data not sent.";
@@ -131,8 +136,8 @@ namespace MultiViewApp.ViewModel
         }
 
         /**
-          * @brief Clear button Click event handling procedure
-          */
+         * @brief Clear button Click event handling procedure
+        */ 
         private async void ClearRequestHandler()
         {
             // Clear display ViewModel

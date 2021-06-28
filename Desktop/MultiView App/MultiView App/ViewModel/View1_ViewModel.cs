@@ -16,7 +16,7 @@ namespace MultiViewApp.ViewModel
     using Model;
 
     /** 
-      * @brief View model for MainWindow.xaml 
+      * @brief View model for View1_ViewModel.xaml 
       */
     public class View1_ViewModel : BaseViewModel
     {
@@ -73,17 +73,17 @@ namespace MultiViewApp.ViewModel
             }
         }
 
-        public PlotModel DataPlotModel { get; set; }
-        public PlotModel DataPlotModel2 { get; set; } //zmienna, którą dodałem potrzebna, żeby narysować wykres
-        public PlotModel DataPlotModel3 { get; set; }
-        public PlotModel DataPlotModel7 { get; set; }
-        public PlotModel DataPlotModel8 { get; set; }
-        public PlotModel DataPlotModel9 { get; set; }
+        public PlotModel DataPlotModel { get; set; } //!< Data plot model 
+        public PlotModel DataPlotModel2 { get; set; } //!< Data plot model 
+        public PlotModel DataPlotModel3 { get; set; } //!< Data plot model 
+        public PlotModel DataPlotModel7 { get; set; } //!< Data plot model 
+        public PlotModel DataPlotModel8 { get; set; } //!< Data plot model 
+        public PlotModel DataPlotModel9 { get; set; } //!< Data plot model 
 
-        public ButtonCommand StartButton { get; set; }
-        public ButtonCommand StopButton { get; set; }
-        public ButtonCommand UpdateConfigButton { get; set; }
-        public ButtonCommand DefaultConfigButton { get; set; }
+        public ButtonCommand StartButton { get; set; } //!< 'START' button command
+        public ButtonCommand StopButton { get; set; } //!< 'STOP' button command
+        public ButtonCommand UpdateConfigButton { get; set; } //!< 'UPDATE' button command
+        public ButtonCommand DefaultConfigButton { get; set; } //!< 'DEFAULT' button command
         #endregion
 
         #region Fields
@@ -92,7 +92,9 @@ namespace MultiViewApp.ViewModel
         private Timer RequestTimer;
         private IoTServer Server;
         #endregion
-
+        /**
+        * @brief View1_ViewModel constructor.
+        */
         public View1_ViewModel()
         {
             //poczatek9
@@ -113,7 +115,7 @@ namespace MultiViewApp.ViewModel
                 Minimum = -2,
                 Maximum = 365,
                 Key = "Vertical",
-                Unit = "%",
+                Unit = "deg",
                 Title = "Roll"
             });
             DataPlotModel9.Series.Add(new LineSeries() { Title = "random humidity series", Color = OxyColor.Parse("#FFFF0000") });
@@ -137,7 +139,7 @@ namespace MultiViewApp.ViewModel
                 Minimum = -2,
                 Maximum = 365,
                 Key = "Vertical",
-                Unit = "%",
+                Unit = "deg",
                 Title = "Pitch"
             });
             DataPlotModel8.Series.Add(new LineSeries() { Title = "random humidity series", Color = OxyColor.Parse("#FFFF0000") });
@@ -162,7 +164,7 @@ namespace MultiViewApp.ViewModel
                 Minimum = -2,
                 Maximum = 365,
                 Key = "Vertical",
-                Unit = "%",
+                Unit = "deg",
                 Title = "Yaw"
             });
             DataPlotModel7.Series.Add(new LineSeries() { Title = "random humidity series", Color = OxyColor.Parse("#FFFF0000") });
@@ -252,6 +254,7 @@ namespace MultiViewApp.ViewModel
 
             Server = new IoTServer(IpAddress,IpPort);
         }
+
         /**
          * @brief Time series plot update procedure.
          * @param t X axis data: Time stamp [ms].
@@ -274,6 +277,7 @@ namespace MultiViewApp.ViewModel
 
             DataPlotModel9.InvalidatePlot(true);
         }
+
         /**
          * @brief Time series plot update procedure.
          * @param t X axis data: Time stamp [ms].
@@ -297,6 +301,11 @@ namespace MultiViewApp.ViewModel
             DataPlotModel8.InvalidatePlot(true);
         }
 
+        /**
+          * @brief Time series plot update procedure.
+          * @param t X axis data: Time stamp [ms].
+          * @param d Y axis data: Real-time measurement [-].
+          */
         private void UpdatePlot7(double t, double d)
         {
             LineSeries lineSeries = DataPlotModel7.Series[0] as LineSeries;
@@ -314,6 +323,7 @@ namespace MultiViewApp.ViewModel
 
             DataPlotModel7.InvalidatePlot(true);
         }
+
         /**
           * @brief Time series plot update procedure.
           * @param t X axis data: Time stamp [ms].
@@ -338,8 +348,10 @@ namespace MultiViewApp.ViewModel
         }
 
         /**
-          *FUNKCJA STWORZONA PRZEZE MNIE ODPOWIEDZIALNA ZA ODŚWIEŻANIE WYKRESU
-          */
+           * @brief Time series plot update procedure.
+           * @param t X axis data: Time stamp [ms].
+           * @param d Y axis data: Real-time measurement [-].
+           */
         private void UpdatePlot2(double t, double d)
         {
             LineSeries lineSeries = DataPlotModel2.Series[0] as LineSeries;
@@ -359,7 +371,9 @@ namespace MultiViewApp.ViewModel
         }
 
         /**
-          *FUNKCJA STWORZONA PRZEZE MNIE ODPOWIEDZIALNA ZA ODŚWIEŻANIE WYKRESU
+          * @brief Time series plot update procedure.
+          * @param t X axis data: Time stamp [ms].
+          * @param d Y axis data: Real-time measurement [-].
           */
         private void UpdatePlot3(double t, double d)
         {
@@ -378,8 +392,6 @@ namespace MultiViewApp.ViewModel
 
             DataPlotModel3.InvalidatePlot(true);
         }
-
-       
 
         /**
           * @brief Asynchronous chart update procedure with

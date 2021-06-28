@@ -17,7 +17,9 @@ using Echovoice.JSON;
 using MultiViewApp.Model;
 namespace MultiViewApp.ViewModel
 {
-    
+    /** 
+     * @brief View model for View2_ViewModel.xaml 
+     */
     class View2_ViewModel : BaseViewModel
     {
         #region Properties
@@ -109,14 +111,16 @@ namespace MultiViewApp.ViewModel
                 }
             }
         }
-        public ButtonCommand SaveButton { get; set; }
-        public ButtonCommand DefaultButton { get; set; }
+        public ButtonCommand SaveButton { get; set; } //!< 'SAVE' button command
+        public ButtonCommand DefaultButton { get; set; } //!< 'DEAFAULT' button command
         #endregion
         #region Fields
         private ConfigParams config = new ConfigParams();
 
         #endregion
-
+        /**
+         * @brief Viev2_ViewModel constructor.
+         */
         public View2_ViewModel()
         {
             ipAddress = config.IpAddress;
@@ -125,16 +129,21 @@ namespace MultiViewApp.ViewModel
             maxSamples = config.MaxSamples;
             apiVersion = config.ApiVersion;
 
-            SaveButton = new ButtonCommand(SaveSettings);
-            DefaultButton = new ButtonCommand(DefaultSettings);
+            SaveButton = new ButtonCommand(SaveSettings); //!< 'SAVE' button command
+            DefaultButton = new ButtonCommand(DefaultSettings); //!< 'DEFAULT' button command
         }
-
+        /**
+         * @brief Save config parameters constructor.
+         */
         public void SaveSettings()
         {
             Debug.WriteLine("Save Button Works!");
             config = new ConfigParams(ipAddress, ipPort, apiVersion, maxSamples, sampleTime);
             config.SaveConfigToFile();
         }
+        /**
+         * @brief Set default parameters constructor.
+         */
         public void DefaultSettings()
         {
             Console.WriteLine("Default Button Works!");

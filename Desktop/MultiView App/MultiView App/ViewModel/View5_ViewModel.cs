@@ -14,6 +14,9 @@ using Newtonsoft.Json;
 
 namespace MultiViewApp.ViewModel
 {
+    /** 
+     * @brief View model for View5_ViewModel.xaml 
+     */
     class View5_ViewModel : BaseViewModel
     {
         private bool _isListening;
@@ -103,15 +106,17 @@ namespace MultiViewApp.ViewModel
             }
         }
         #endregion
-
+        /** 
+        * @brief View5_ViewModel constructor.
+        */
         public View5_ViewModel()
         {
             _isListening = false;
 
             _config = new ConfigParams();
             _server = new IoTServer(_config.IpAddress,_config.IpPort);
-            StartCommand = new ButtonCommand(StartListening);
-            StopCommand = new ButtonCommand(StopListening);
+            StartCommand = new ButtonCommand(StartListening); //!< "START" button command
+            StopCommand = new ButtonCommand(StopListening); //!< "STOP" button command
 
             UpColor = Brushes.LightGray;
             LeftColor = Brushes.LightGray;
@@ -120,7 +125,9 @@ namespace MultiViewApp.ViewModel
             DownColor = Brushes.LightGray;
 
         }
-
+        /** 
+        * @brief Start listening procedure.
+        */
         public async void StartListening()
         {
 
@@ -136,7 +143,9 @@ namespace MultiViewApp.ViewModel
 
 
         }
-
+        /** 
+        * @brief Stop listening procedure.
+        */
         private void StopListening()
         {
             if (_cts != null)
@@ -147,7 +156,9 @@ namespace MultiViewApp.ViewModel
 
 
         }
-
+        /** 
+        * @brief Get Joystick actual position procedure.
+        */
         private async Task JoystickLoop()
         {
             while (!_ct.IsCancellationRequested)
@@ -175,7 +186,10 @@ namespace MultiViewApp.ViewModel
             }
         }
 
-
+        /** 
+        * @brief BoxView update procedure.
+        * @param joystick BoxView color
+        */
         //Method updating BoxView colors based on joystick model
         private void IndicateChange(JoystickModel joystick)
         {

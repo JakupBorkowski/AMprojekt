@@ -28,7 +28,7 @@ namespace MultiViewApp.Model
         */
         public string ScriptUrl
         {
-            get => "http://" + ip + "/server/led_display.php";
+            get => "http://" + ip + "/led_display.php";
         }
 
         public async Task<string> PostControlRequest(List<KeyValuePair<string, string>> data)
@@ -54,14 +54,24 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
+
+        /**
+         * @brief obtaining the address of the data file from IoT server IP.
+         */
         private string GetFileUrl9()
         {
             return "http://" + ip + "/chartdata_desktop6.json";
         }
+        /**
+         * @brief obtaining the address of the data file from IoT server IP.
+         */
         private string GetFileUrl8()
         {
             return "http://" + ip + "/chartdata_desktop5.json";
         }
+        /**
+         * @brief obtaining the address of the data file from IoT server IP.
+         */
         private string GetFileUrl7()
         {
             return "http://" + ip + "/chartdata_desktop4.json";
@@ -73,19 +83,21 @@ namespace MultiViewApp.Model
         {
             return "http://" + ip + "/chartdata_desktop.json";
         }
-        //funkcja stworzona przeze mnie używana do pobrania danych z pliku potrzebnych do umieszczenia na wykresie
+        /**
+         * @brief obtaining the address of the data file from IoT server IP.
+         */
         private string GetFileUrl2()
         {
             return "http://" + ip + "/chartdata_desktop2.json";
         }
 
-        //funkcja stworzona przeze mnie używana do pobrania danych z pliku potrzebnych do umieszczenia na wykresie
+        /**
+          * @brief obtaining the address of the data file from IoT server IP.
+          */
         private string GetFileUrl3()
         {
             return "http://" + ip + "/chartdata_desktop3.json";
         }
-
-        
 
         /**
          * @brief obtaining the address of the PHP script from IoT server IP.
@@ -140,7 +152,9 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
-
+        /**
+        * @brief HTTP GET request using HttpClient
+        */
         public async Task<string> GETwithClient7()
         {
             string responseText = null;
@@ -183,8 +197,8 @@ namespace MultiViewApp.Model
             return responseText;
         }
         /**
-          * funkcja stworzona przeze mnie potrzebna do rysowania danych (pobieranie jsona)
-          */
+        * @brief HTTP GET request using HttpClient
+        */
         public async Task<string> GETwithClient2()
         {
             string responseText = null;
@@ -206,8 +220,8 @@ namespace MultiViewApp.Model
         }
 
         /**
-         * funkcja stworzona przeze mnie potrzebna do rysowania danych (pobieranie jsona)
-         */
+        * @brief HTTP GET request using HttpClient
+        */
         public async Task<string> GETwithClient3()
         {
             string responseText = null;
@@ -230,8 +244,8 @@ namespace MultiViewApp.Model
 
 
         /**
-          * @brief HTTP POST request using HttpClient
-         */
+        * @brief HTTP POST request using HttpClient
+        */
         public async Task<string> POSTwithClient9()
         {
             string responseText = null;
@@ -259,8 +273,8 @@ namespace MultiViewApp.Model
             return responseText;
         }
         /**
-          * @brief HTTP POST request using HttpClient
-         */
+        * @brief HTTP POST request using HttpClient
+        */
         public async Task<string> POSTwithClient8()
         {
             string responseText = null;
@@ -289,8 +303,8 @@ namespace MultiViewApp.Model
         }
 
         /**
-          * @brief HTTP POST request using HttpClient
-         */
+        * @brief HTTP POST request using HttpClient
+        */
         public async Task<string> POSTwithClient7()
         {
             string responseText = null;
@@ -318,8 +332,8 @@ namespace MultiViewApp.Model
             return responseText;
         }
         /**
-          * @brief HTTP POST request using HttpClient
-         */
+        * @brief HTTP POST request using HttpClient
+        */
         public async Task<string> POSTwithClient()
         {
             string responseText = null;
@@ -346,7 +360,9 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
-
+        /**
+        * @brief HTTP POST request using HttpClient
+        */
         public async Task<string> POSTwithClient2()
         {
             string responseText = null;
@@ -373,7 +389,9 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
-
+        /**
+        * @brief HTTP POST request using HttpClient
+        */
         public async Task<string> POSTwithClient3()
         {
             string responseText = null;
@@ -429,8 +447,8 @@ namespace MultiViewApp.Model
             return responseText;
         }
         /**
-          * @brief HTTP GET request using HttpWebRequest
-          */
+        * @brief HTTP GET request using HttpWebRequest
+        */
         public async Task<string> GETwithRequest8()
         {
             string responseText = null;
@@ -456,6 +474,9 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
+        /**
+        * @brief HTTP GET request using HttpWebRequest
+        */
         public async Task<string> GETwithRequest7()
         {
             string responseText = null;
@@ -482,8 +503,8 @@ namespace MultiViewApp.Model
             return responseText;
         }
         /**
-          * @brief HTTP GET request using HttpWebRequest
-          */
+        * @brief HTTP GET request using HttpWebRequest
+        */
         public async Task<string> GETwithRequest()
         {
             string responseText = null;
@@ -509,7 +530,9 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
-
+        /**
+        * @brief HTTP GET request using HttpWebRequest
+        */
         public async Task<string> GETwithRequest2()
         {
             string responseText = null;
@@ -535,7 +558,9 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
-
+        /**
+        * @brief HTTP GET request using HttpWebRequest
+        */
         public async Task<string> GETwithRequest3()
         {
             string responseText = null;
@@ -565,8 +590,8 @@ namespace MultiViewApp.Model
 
        
         /**
-          * @brief HTTP POST request using HttpWebRequest
-          */
+        * @brief HTTP POST request using HttpWebRequest
+        */
         public async Task<string> POSTwithRequest()
         {
             string responseText = null;
@@ -603,8 +628,8 @@ namespace MultiViewApp.Model
             return responseText;
         }
         /**
-          * @brief HTTP POST request using HttpWebRequest
-          */
+        * @brief HTTP POST request using HttpWebRequest
+        */
         public async Task<string> POSTwithRequest7()
         {
             string responseText = null;
@@ -641,8 +666,8 @@ namespace MultiViewApp.Model
             return responseText;
         }
         /**
-          * @brief HTTP POST request using HttpWebRequest
-          */
+        * @brief HTTP POST request using HttpWebRequest
+        */
         public async Task<string> POSTwithRequest8()
         {
             string responseText = null;
@@ -679,8 +704,8 @@ namespace MultiViewApp.Model
             return responseText;
         }
         /**
-          * @brief HTTP POST request using HttpWebRequest
-          */
+        * @brief HTTP POST request using HttpWebRequest
+        */
         public async Task<string> POSTwithRequest9()
         {
             string responseText = null;
@@ -716,6 +741,9 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
+        /**
+        * @brief HTTP POST request using HttpWebRequest
+        */
         public async Task<string> POSTwithRequest2()
         {
             string responseText = null;
@@ -751,7 +779,9 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
-
+        /**
+        * @brief HTTP POST request using HttpWebRequest
+        */
         public async Task<string> POSTwithRequest3()
         {
             string responseText = null;
@@ -787,13 +817,18 @@ namespace MultiViewApp.Model
 
             return responseText;
         }
-        
 
-        //SEKCJA ODPOWIEDZIALNA ZA LISTE
+
+        /**
+         * @brief obtaining the address of the data file from IoT server IP.
+         */
         private string GetDataUri()
         {
             return "http://192.168.56.15"+"/datalist.json";
         }
+        /**
+        * @brief HTTP GET request using HttpWebRequest
+        */
         public async Task<string> GETData()
         {
             string responseText = null;
@@ -816,11 +851,16 @@ namespace MultiViewApp.Model
             return responseText;
         }
 
-        //SEKCJA ODPOWIEDZIALNA ZA JOYSTICK
+        /**
+         * @brief obtaining the address of the data file from IoT server IP.
+         */
         private string GetJoystickUri()
         {
-            return "http://"+ip+"/datajoystick.json";
+            return "http://"+ip+"/datajoystick123.json";
         }
+        /**
+        * @brief HTTP GET request using HttpWebRequest
+        */
         public async Task<string> GETJoystick()
         {
             string responseText = null;
