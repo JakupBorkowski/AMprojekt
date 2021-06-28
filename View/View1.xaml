@@ -1,0 +1,132 @@
+﻿<UserControl x:Class="MultiViewApp.View.View1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:oxy="http://oxyplot.org/wpf"
+             xmlns:local="clr-namespace:MultiViewApp.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="900" d:DesignWidth="1200">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" Margin="0,0,0,44">
+        <Grid ScrollViewer.CanContentScroll="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" MinHeight="300"/>
+                <RowDefinition Height="Auto" MinHeight="300"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="300"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock 
+                Grid.Column="0" 
+                Margin="20,10,0,10" 
+                Text="IP address: " VerticalAlignment="Center"/>
+                <TextBox 
+                Grid.Column="1" 
+                Margin="0,10,0,10" 
+                Width="100" 
+                HorizontalAlignment="Left" 
+                Text="{Binding IpAddress}"/>
+                <TextBlock 
+                Grid.Column="2" 
+                Margin="0,10,0,10"  
+                Text="Sample time: " 
+                HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox 
+                Grid.Column="3" 
+                Margin="0,10,0,10" 
+                Width="50" 
+                HorizontalAlignment="Left" 
+                Text="{Binding SampleTime}"/>
+                <TextBlock
+                Grid.Column="4" 
+                Margin="0,10,20,10" 
+                Text=" ms"  
+                HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button 
+                Grid.Column="0"
+                Height="30" 
+                Width="150"
+                Margin="0,10,30,10" 
+                Command="{Binding StartButton}" 
+                CommandParameter="START"
+                HorizontalAlignment="Right">
+                    START
+                </Button>
+                <Button 
+                Grid.Column="1" 
+                Height="30" 
+                Width="150" 
+                Margin="0,10,15,10" 
+                Command="{Binding StopButton}">
+                    STOP
+                </Button>
+                <Button 
+                Grid.Column="2" 
+                Height="30"
+                Width="150" 
+                Margin="15,10,0,10" 
+                Command="{Binding UpdateConfigButton}" HorizontalAlignment="Left">
+                    UPDATE CONFIG
+                </Button>
+                <Button 
+                Grid.Column="3" 
+                Height="30"
+                Width="150" 
+                Margin="30,10,0,10" 
+                Command="{Binding DefaultConfigButton}" HorizontalAlignment="Left">
+                    DEFAULT CONFIG
+                </Button>
+            </Grid>
+
+            <oxy:PlotView x:Name="HumidityPlotView"
+                      Grid.Row="2"
+                          Margin="0,0,10,300"
+                      Model="{Binding DataPlotModel}" Grid.RowSpan="2"/>
+
+            <oxy:PlotView x:Name="TemperaturePlotView"
+                      Grid.Row="3"
+                          Margin="0,0,10,300"
+                      Model="{Binding DataPlotModel2}" Grid.RowSpan="2"/>
+
+            <oxy:PlotView x:Name="PressurePlotView"
+                      Grid.Row="4"
+                          Margin="0,0,10,0"
+                      Model="{Binding DataPlotModel3}"/>
+            <oxy:PlotView x:Name="YawPlotView2"
+                      Grid.Row="5"
+                          Margin="0,0,10,0"
+                      Model="{Binding DataPlotModel7}"/>
+            <oxy:PlotView x:Name="PitchPlotView2"
+                      Grid.Row="6"
+                          Margin="0,0,10,0"
+                      Model="{Binding DataPlotModel8}"/>
+            <oxy:PlotView x:Name="RollPlotView2"
+                      Grid.Row="7"
+                          Margin="0,0,10,0"
+                      Model="{Binding DataPlotModel9}"/>
+            
+
+
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>
