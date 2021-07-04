@@ -47,7 +47,6 @@
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="414,379,0,0" TextWrapping="Wrap" Text="Ts" FontSize="19" VerticalAlignment="Top"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="414,21,0,0" TextWrapping="Wrap" Text="Max samples" FontSize="19" VerticalAlignment="Top" Grid.Row="1"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="494,113,0,0" TextWrapping="Wrap" Text="Configuration Menu" FontSize="25" VerticalAlignment="Top"/>
-        <Button Content="Save Settings" Grid.Column="1" HorizontalAlignment="Left" Margin="414,97,0,0" VerticalAlignment="Top" Command="{Binding SaveButton}" Width="217" Grid.Row="1" Click="Button_Click"/>
-        <Button Content="Default Settings" Grid.Column="1" HorizontalAlignment="Left" Margin="676,97,0,0" VerticalAlignment="Top" Command="{Binding DefaultButton}" Width="217" Grid.Row="1"/>
+        <Button Content="Save Settings" Grid.Column="1" HorizontalAlignment="Left" Margin="499,94,0,0" VerticalAlignment="Top" Command="{Binding SaveButton}" Width="217" Grid.Row="1" Click="Button_Click"/>
     </Grid>
 </UserControl>

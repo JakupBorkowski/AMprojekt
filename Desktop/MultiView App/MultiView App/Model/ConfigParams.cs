@@ -13,7 +13,7 @@ namespace MultiViewApp.Model
     public class ConfigParams
     {
         static readonly string defaultIpAdress = "192.168.56.15";
-        static readonly string defaultIpPort = "8080";
+        static readonly string defaultIpPort = "80";
         static readonly string defaultApiVersion = "1.0.0";
         public static readonly byte defaultAlphaChannge = 153;
         public string ApiVersion;

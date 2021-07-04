@@ -28,7 +28,7 @@ namespace MultiViewApp.Model
         */
         public string ScriptUrl
         {
-            get => "http://" + ip + "/led_display.php";
+            get => "http://" + ip + ":" + port + "/led_display.php";
         }
 
         public async Task<string> PostControlRequest(List<KeyValuePair<string, string>> data)
@@ -60,35 +60,35 @@ namespace MultiViewApp.Model
          */
         private string GetFileUrl9()
         {
-            return "http://" + ip + "/chartdata_desktop6.json";
+            return "http://" + ip + ":" + port +"/chartdata_desktop6.json";
         }
         /**
          * @brief obtaining the address of the data file from IoT server IP.
          */
         private string GetFileUrl8()
         {
-            return "http://" + ip + "/chartdata_desktop5.json";
+            return "http://" + ip + ":" + port + "/chartdata_desktop5.json";
         }
         /**
          * @brief obtaining the address of the data file from IoT server IP.
          */
         private string GetFileUrl7()
         {
-            return "http://" + ip + "/chartdata_desktop4.json";
+            return "http://" + ip + ":" + port + "/chartdata_desktop4.json";
         }
         /**
          * @brief obtaining the address of the data file from IoT server IP.
          */
         private string GetFileUrl()
         {
-            return "http://" + ip + "/chartdata_desktop.json";
+            return "http://" + ip + ":" + port + "/chartdata_desktop.json";
         }
         /**
          * @brief obtaining the address of the data file from IoT server IP.
          */
         private string GetFileUrl2()
         {
-            return "http://" + ip + "/chartdata_desktop2.json";
+            return "http://" + ip + ":" + port + "/chartdata_desktop2.json";
         }
 
         /**
@@ -96,7 +96,7 @@ namespace MultiViewApp.Model
           */
         private string GetFileUrl3()
         {
-            return "http://" + ip + "/chartdata_desktop3.json";
+            return "http://" + ip + ":" + port + "/chartdata_desktop3.json";
         }
 
         /**
@@ -104,7 +104,7 @@ namespace MultiViewApp.Model
          */
         private string GetScriptUrl()
         {
-            return "http://" + ip + "/projektAM/resource_desktop.php";
+            return "http://" + ip + ":" + port + "/projektAM/resource_desktop.php";
         }
 
 
@@ -824,7 +824,7 @@ namespace MultiViewApp.Model
          */
         private string GetDataUri()
         {
-            return "http://192.168.56.15"+"/datalist.json";
+            return "http://" + ip + ":" + port + "/datalist.json";
         }
         /**
         * @brief HTTP GET request using HttpWebRequest
@@ -856,7 +856,7 @@ namespace MultiViewApp.Model
          */
         private string GetJoystickUri()
         {
-            return "http://"+ip+"/datajoystick123.json";
+            return "http://" + ip + ":" + port + "/datajoystick123.json";
         }
         /**
         * @brief HTTP GET request using HttpWebRequest

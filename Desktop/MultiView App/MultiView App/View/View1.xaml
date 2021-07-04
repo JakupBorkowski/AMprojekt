@@ -65,35 +65,19 @@
                 Grid.Column="0"
                 Height="30" 
                 Width="150"
-                Margin="0,10,30,10" 
+                Margin="443,10,0,10" 
                 Command="{Binding StartButton}" 
                 CommandParameter="START"
-                HorizontalAlignment="Right">
+                HorizontalAlignment="Left">
                     START
                 </Button>
                 <Button 
-                Grid.Column="1" 
+                Grid.Column="3" 
                 Height="30" 
                 Width="150" 
-                Margin="0,10,15,10" 
+                Margin="10,10,350,10" 
                 Command="{Binding StopButton}">
                     STOP
-                </Button>
-                <Button 
-                Grid.Column="2" 
-                Height="30"
-                Width="150" 
-                Margin="15,10,0,10" 
-                Command="{Binding UpdateConfigButton}" HorizontalAlignment="Left">
-                    UPDATE CONFIG
-                </Button>
-                <Button 
-                Grid.Column="3" 
-                Height="30"
-                Width="150" 
-                Margin="30,10,0,10" 
-                Command="{Binding DefaultConfigButton}" HorizontalAlignment="Left">
-                    DEFAULT CONFIG
                 </Button>
             </Grid>
 
@@ -123,7 +107,7 @@
                       Grid.Row="7"
                           Margin="0,0,10,0"
                       Model="{Binding DataPlotModel9}"/>
-            
+
 
 
 
