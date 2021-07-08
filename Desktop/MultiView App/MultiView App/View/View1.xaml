@@ -84,29 +84,29 @@
             <oxy:PlotView x:Name="HumidityPlotView"
                       Grid.Row="2"
                           Margin="0,0,10,300"
-                      Model="{Binding DataPlotModel}" Grid.RowSpan="2"/>
+                      Model="{Binding humidityGraph}" Grid.RowSpan="2"/>
 
             <oxy:PlotView x:Name="TemperaturePlotView"
                       Grid.Row="3"
                           Margin="0,0,10,300"
-                      Model="{Binding DataPlotModel2}" Grid.RowSpan="2"/>
+                      Model="{Binding temperatureGraph}" Grid.RowSpan="2"/>
 
             <oxy:PlotView x:Name="PressurePlotView"
                       Grid.Row="4"
                           Margin="0,0,10,0"
-                      Model="{Binding DataPlotModel3}"/>
+                      Model="{Binding pressureGraph}"/>
             <oxy:PlotView x:Name="YawPlotView2"
                       Grid.Row="5"
                           Margin="0,0,10,0"
-                      Model="{Binding DataPlotModel7}"/>
+                      Model="{Binding yawGraph}"/>
             <oxy:PlotView x:Name="PitchPlotView2"
                       Grid.Row="6"
                           Margin="0,0,10,0"
-                      Model="{Binding DataPlotModel8}"/>
+                      Model="{Binding pitchGraph}"/>
             <oxy:PlotView x:Name="RollPlotView2"
                       Grid.Row="7"
                           Margin="0,0,10,0"
-                      Model="{Binding DataPlotModel9}"/>
+                      Model="{Binding rollGraph}"/>
 
 
 

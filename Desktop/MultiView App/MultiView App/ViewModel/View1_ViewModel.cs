@@ -73,12 +73,12 @@ namespace MultiViewApp.ViewModel
             }
         }
 
-        public PlotModel DataPlotModel { get; set; } //!< Data plot model 
-        public PlotModel DataPlotModel2 { get; set; } //!< Data plot model 
-        public PlotModel DataPlotModel3 { get; set; } //!< Data plot model 
-        public PlotModel DataPlotModel7 { get; set; } //!< Data plot model 
-        public PlotModel DataPlotModel8 { get; set; } //!< Data plot model 
-        public PlotModel DataPlotModel9 { get; set; } //!< Data plot model 
+        public PlotModel humidityGraph { get; set; } //!< Data plot model 
+        public PlotModel temperatureGraph { get; set; } //!< Data plot model 
+        public PlotModel pressureGraph { get; set; } //!< Data plot model 
+        public PlotModel yawGraph { get; set; } //!< Data plot model 
+        public PlotModel pitchGraph { get; set; } //!< Data plot model 
+        public PlotModel rollGraph { get; set; } //!< Data plot model 
 
         public ButtonCommand StartButton { get; set; } //!< 'START' button command
         public ButtonCommand StopButton { get; set; } //!< 'STOP' button command
@@ -98,9 +98,9 @@ namespace MultiViewApp.ViewModel
         public View1_ViewModel()
         {
             //poczatek9
-            DataPlotModel9 = new PlotModel { Title = "ROLL" };
+            rollGraph = new PlotModel { Title = "ROLL" };
 
-            DataPlotModel9.Axes.Add(new LinearAxis()
+            rollGraph.Axes.Add(new LinearAxis()
             {
                 Position = AxisPosition.Bottom,
                 Minimum = 0,
@@ -109,7 +109,7 @@ namespace MultiViewApp.ViewModel
                 Unit = "sec",
                 Title = "Time"
             });
-            DataPlotModel9.Axes.Add(new LinearAxis()
+            rollGraph.Axes.Add(new LinearAxis()
             {
                 Position = AxisPosition.Left,
                 Minimum = -2,
@@ -118,13 +118,13 @@ namespace MultiViewApp.ViewModel
                 Unit = "deg",
                 Title = "Roll"
             });
-            DataPlotModel9.Series.Add(new LineSeries() { Title = "random humidity series", Color = OxyColor.Parse("#FFFF0000") });
+            rollGraph.Series.Add(new LineSeries() { Title = "random humidity series", Color = OxyColor.Parse("#FFFF0000") });
             //koniec9
 
             //poczatek8
-            DataPlotModel8 = new PlotModel { Title = "PITCH" };
+            pitchGraph = new PlotModel { Title = "PITCH" };
 
-            DataPlotModel8.Axes.Add(new LinearAxis()
+            pitchGraph.Axes.Add(new LinearAxis()
             {
                 Position = AxisPosition.Bottom,
                 Minimum = 0,
@@ -133,7 +133,7 @@ namespace MultiViewApp.ViewModel
                 Unit = "sec",
                 Title = "Time"
             });
-            DataPlotModel8.Axes.Add(new LinearAxis()
+            pitchGraph.Axes.Add(new LinearAxis()
             {
                 Position = AxisPosition.Left,
                 Minimum = -2,
@@ -142,14 +142,14 @@ namespace MultiViewApp.ViewModel
                 Unit = "deg",
                 Title = "Pitch"
             });
-            DataPlotModel8.Series.Add(new LineSeries() { Title = "random humidity series", Color = OxyColor.Parse("#FFFF0000") });
+            pitchGraph.Series.Add(new LineSeries() { Title = "random humidity series", Color = OxyColor.Parse("#FFFF0000") });
             //koniec8
 
 
             //poczatek 7
-            DataPlotModel7 = new PlotModel { Title = "YAW" };
+            yawGraph = new PlotModel { Title = "YAW" };
 
-            DataPlotModel7.Axes.Add(new LinearAxis()
+            yawGraph.Axes.Add(new LinearAxis()
             {
                 Position = AxisPosition.Bottom,
                 Minimum = 0,
@@ -158,7 +158,7 @@ namespace MultiViewApp.ViewModel
                 Unit = "sec",
                 Title = "Time"
             });
-            DataPlotModel7.Axes.Add(new LinearAxis()
+            yawGraph.Axes.Add(new LinearAxis()
             {
                 Position = AxisPosition.Left,
                 Minimum = -2,
@@ -167,12 +167,12 @@ namespace MultiViewApp.ViewModel
                 Unit = "deg",
                 Title = "Yaw"
             });
-            DataPlotModel7.Series.Add(new LineSeries() { Title = "random humidity series", Color = OxyColor.Parse("#FFFF0000") });
+            yawGraph.Series.Add(new LineSeries() { Title = "random humidity series", Color = OxyColor.Parse("#FFFF0000") });
             //end of 7th plot
 
-            DataPlotModel = new PlotModel { Title = "HUMIDITY" };
+            humidityGraph = new PlotModel { Title = "HUMIDITY" };
 
-            DataPlotModel.Axes.Add(new LinearAxis()
+            humidityGraph.Axes.Add(new LinearAxis()
             {
                 Position = AxisPosition.Bottom,
                 Minimum = 0,
@@ -181,7 +181,7 @@ namespace MultiViewApp.ViewModel
                 Unit = "sec",
                 Title = "Time"
             });
-            DataPlotModel.Axes.Add(new LinearAxis()
+            humidityGraph.Axes.Add(new LinearAxis()
             {
                 Position = AxisPosition.Left,
                 Minimum = -2,
@@ -190,12 +190,12 @@ namespace MultiViewApp.ViewModel
                 Unit = "%",
                 Title = "Humidity"
             });
-            DataPlotModel.Series.Add(new LineSeries() { Title = "random humidity series", Color = OxyColor.Parse("#FFFF0000") });
+            humidityGraph.Series.Add(new LineSeries() { Title = "random humidity series", Color = OxyColor.Parse("#FFFF0000") });
 
             //2nd plot (dodane przeze mnie)
-            DataPlotModel2 = new PlotModel { Title = "TEMPERATURE" };
+            temperatureGraph = new PlotModel { Title = "TEMPERATURE" };
 
-            DataPlotModel2.Axes.Add(new LinearAxis()
+            temperatureGraph.Axes.Add(new LinearAxis()
             {
                 Position = AxisPosition.Bottom,
                 Minimum = 0,
@@ -204,7 +204,7 @@ namespace MultiViewApp.ViewModel
                 Unit = "sec",
                 Title = "Time"
             });
-            DataPlotModel2.Axes.Add(new LinearAxis()
+            temperatureGraph.Axes.Add(new LinearAxis()
             {
                 Position = AxisPosition.Left,
                 Minimum = -32,
@@ -213,13 +213,13 @@ namespace MultiViewApp.ViewModel
                 Unit = "*C",
                 Title = "Temperature"
             });
-            DataPlotModel2.Series.Add(new LineSeries() { Title = "random temperature series", Color = OxyColor.Parse("#FFFF0000") });
+            temperatureGraph.Series.Add(new LineSeries() { Title = "random temperature series", Color = OxyColor.Parse("#FFFF0000") });
             //end of 2nd plot
 
             //3rd plot (dodane przeze mnie)
-            DataPlotModel3 = new PlotModel { Title = "PRESSURE" };
+            pressureGraph = new PlotModel { Title = "PRESSURE" };
 
-            DataPlotModel3.Axes.Add(new LinearAxis()
+            pressureGraph.Axes.Add(new LinearAxis()
             {
                 Position = AxisPosition.Bottom,
                 Minimum = 0,
@@ -228,7 +228,7 @@ namespace MultiViewApp.ViewModel
                 Unit = "sec",
                 Title = "Time"
             });
-            DataPlotModel3.Axes.Add(new LinearAxis()
+            pressureGraph.Axes.Add(new LinearAxis()
             {
                 Position = AxisPosition.Left,
                 Minimum = 250,
@@ -237,7 +237,7 @@ namespace MultiViewApp.ViewModel
                 Unit = "mbar",
                 Title = "Pressure"
             });
-            DataPlotModel3.Series.Add(new LineSeries() { Title = "random pressure series", Color = OxyColor.Parse("#FFFF0000") });
+            pressureGraph.Series.Add(new LineSeries() { Title = "random pressure series", Color = OxyColor.Parse("#FFFF0000") });
             //end of 3rd plot
 
            
@@ -260,9 +260,9 @@ namespace MultiViewApp.ViewModel
          * @param t X axis data: Time stamp [ms].
          * @param d Y axis data: Real-time measurement [-].
          */
-        private void UpdatePlot9(double t, double d)
+        private void UpdateRollPlot(double t, double d)
         {
-            LineSeries lineSeries = DataPlotModel9.Series[0] as LineSeries;
+            LineSeries lineSeries = rollGraph.Series[0] as LineSeries;
 
             lineSeries.Points.Add(new DataPoint(t, d));
 
@@ -271,11 +271,11 @@ namespace MultiViewApp.ViewModel
 
             if (t >= config.XAxisMax)
             {
-                DataPlotModel9.Axes[0].Minimum = (t - config.XAxisMax);
-                DataPlotModel9.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
+                rollGraph.Axes[0].Minimum = (t - config.XAxisMax);
+                rollGraph.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
             }
 
-            DataPlotModel9.InvalidatePlot(true);
+            rollGraph.InvalidatePlot(true);
         }
 
         /**
@@ -283,9 +283,9 @@ namespace MultiViewApp.ViewModel
          * @param t X axis data: Time stamp [ms].
          * @param d Y axis data: Real-time measurement [-].
          */
-        private void UpdatePlot8(double t, double d)
+        private void UpdatePitchPlot(double t, double d)
         {
-            LineSeries lineSeries = DataPlotModel8.Series[0] as LineSeries;
+            LineSeries lineSeries = pitchGraph.Series[0] as LineSeries;
 
             lineSeries.Points.Add(new DataPoint(t, d));
 
@@ -294,11 +294,11 @@ namespace MultiViewApp.ViewModel
 
             if (t >= config.XAxisMax)
             {
-                DataPlotModel8.Axes[0].Minimum = (t - config.XAxisMax);
-                DataPlotModel8.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
+                pitchGraph.Axes[0].Minimum = (t - config.XAxisMax);
+                pitchGraph.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
             }
 
-            DataPlotModel8.InvalidatePlot(true);
+            pitchGraph.InvalidatePlot(true);
         }
 
         /**
@@ -306,9 +306,9 @@ namespace MultiViewApp.ViewModel
           * @param t X axis data: Time stamp [ms].
           * @param d Y axis data: Real-time measurement [-].
           */
-        private void UpdatePlot7(double t, double d)
+        private void UpdateYawPlot(double t, double d)
         {
-            LineSeries lineSeries = DataPlotModel7.Series[0] as LineSeries;
+            LineSeries lineSeries = yawGraph.Series[0] as LineSeries;
 
             lineSeries.Points.Add(new DataPoint(t, d));
 
@@ -317,11 +317,11 @@ namespace MultiViewApp.ViewModel
 
             if (t >= config.XAxisMax)
             {
-                DataPlotModel7.Axes[0].Minimum = (t - config.XAxisMax);
-                DataPlotModel7.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
+                yawGraph.Axes[0].Minimum = (t - config.XAxisMax);
+                yawGraph.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
             }
 
-            DataPlotModel7.InvalidatePlot(true);
+            yawGraph.InvalidatePlot(true);
         }
 
         /**
@@ -329,9 +329,9 @@ namespace MultiViewApp.ViewModel
           * @param t X axis data: Time stamp [ms].
           * @param d Y axis data: Real-time measurement [-].
           */
-        private void UpdatePlot(double t, double d)
+        private void UpdateHumidityPlot(double t, double d)
         {
-            LineSeries lineSeries = DataPlotModel.Series[0] as LineSeries;
+            LineSeries lineSeries = humidityGraph.Series[0] as LineSeries;
 
             lineSeries.Points.Add(new DataPoint(t, d));
 
@@ -340,11 +340,11 @@ namespace MultiViewApp.ViewModel
 
             if (t >= config.XAxisMax)
             {
-                DataPlotModel.Axes[0].Minimum = (t - config.XAxisMax);
-                DataPlotModel.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
+                humidityGraph.Axes[0].Minimum = (t - config.XAxisMax);
+                humidityGraph.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
             }
 
-            DataPlotModel.InvalidatePlot(true);
+            humidityGraph.InvalidatePlot(true);
         }
 
         /**
@@ -352,9 +352,9 @@ namespace MultiViewApp.ViewModel
            * @param t X axis data: Time stamp [ms].
            * @param d Y axis data: Real-time measurement [-].
            */
-        private void UpdatePlot2(double t, double d)
+        private void UpdateTemperaturePlot(double t, double d)
         {
-            LineSeries lineSeries = DataPlotModel2.Series[0] as LineSeries;
+            LineSeries lineSeries = temperatureGraph.Series[0] as LineSeries;
 
             lineSeries.Points.Add(new DataPoint(t, d));
 
@@ -363,11 +363,11 @@ namespace MultiViewApp.ViewModel
 
             if (t >= config.XAxisMax)
             {
-                DataPlotModel2.Axes[0].Minimum = (t - config.XAxisMax);
-                DataPlotModel2.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
+                temperatureGraph.Axes[0].Minimum = (t - config.XAxisMax);
+                temperatureGraph.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
             }
 
-            DataPlotModel2.InvalidatePlot(true);
+            temperatureGraph.InvalidatePlot(true);
         }
 
         /**
@@ -375,9 +375,9 @@ namespace MultiViewApp.ViewModel
           * @param t X axis data: Time stamp [ms].
           * @param d Y axis data: Real-time measurement [-].
           */
-        private void UpdatePlot3(double t, double d)
+        private void UpdatePressurePlot(double t, double d)
         {
-            LineSeries lineSeries = DataPlotModel3.Series[0] as LineSeries;
+            LineSeries lineSeries = pressureGraph.Series[0] as LineSeries;
 
             lineSeries.Points.Add(new DataPoint(t, d));
 
@@ -386,11 +386,11 @@ namespace MultiViewApp.ViewModel
 
             if (t >= config.XAxisMax)
             {
-                DataPlotModel3.Axes[0].Minimum = (t - config.XAxisMax);
-                DataPlotModel3.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
+                pressureGraph.Axes[0].Minimum = (t - config.XAxisMax);
+                pressureGraph.Axes[0].Maximum = t + config.SampleTime / 1000.0; ;
             }
 
-            DataPlotModel3.InvalidatePlot(true);
+            pressureGraph.InvalidatePlot(true);
         }
 
         /**
@@ -403,74 +403,86 @@ namespace MultiViewApp.ViewModel
 #if CLIENT
 #if GET
        
-            string responseText = await Server.GETwithClient();
-            string responseText2 = await Server.GETwithClient2();
-            string responseText3 = await Server.GETwithClient3();
-            string responseText7 = await Server.GETwithClient7();
-            string responseText8 = await Server.GETwithClient8();
-            string responseText9 = await Server.GETwithClient9();
+            string HumidityResponseText = await Server.GETwithClient_Humidity();
+            string TemperatureResponseText = await Server.GETwithClient_Temperature();
+            string PressureResponseText = await Server.GETwithClient_Pressure();
+            string YawResponseText = await Server.GETwithClient_Yaw();
+            string PitchResponseText = await Server.GETwithClient_Pitch();
+            string RollResponseText = await Server.GETwithClient_Roll();
 #else
-            string responseText = await Server.POSTwithClient();
-            string responseText2 = await Server.POSTwithClient2();
-            string responseText3 = await Server.POSTwithClient3();
-            string responseText7 = await Server.GETwithClient7();
-            string responseText8 = await Server.GETwithClient8();
+            string HumidityResponseText = await Server.GETwithClient_Humidity();
+            string TemperatureResponseText = await Server.GETwithClient_Temperature();
+            string PressureResponseText = await Server.GETwithClient_Pressure();
+            string YawResponseText = await Server.GETwithClient_Yaw();
+            string PitchResponseText = await Server.GETwithClient_Pitch();
+            string RollResponseText = await Server.GETwithClient_Roll();
             
 #endif
 #else
 #if GET
-            string responseText = await Server.GETwithRequest();
-            string responseText2 = await Server.GETwithRequest2();
-            string responseText3 = await Server.GETwithRequest3();
-            string responseText7 = await Server.GETwithClient7();
-            string responseText8 = await Server.GETwithClient8();
+            string HumidityResponseText = await Server.GETwithRequest_Humidity();
+            string TemperatureResponseText = await Server.GETwithRequest_Temperature();
+            string PressureResponseText = await Server.GETwithRequest_Pressure();
+            string YawResponseText = await Server.GETwithRequest_Yaw();
+            string PitchResponseText = await Server.GETwithRequest_Pitch();
+            string RollResponseText = await Server.GETwithRequest_Roll();
             
 #else
-            string responseText = await Server.POSTwithRequest();
-            string responseText2 = await Server.POSTwithRequest2();
-            string responseText3 = await Server.POSTwithRequest3();
-            string responseText7 = await Server.GETwithClient7();
-            string responseText8 = await Server.GETwithClient8();
+            string HumidityResponseText = await Server.POSTwithRequest_Humidity();
+            string TemperatureResponseText = await Server.POSTwithRequest_Temperature();
+            string PressureResponseText = await Server.POSTwithRequest_Pressure();
+            string YawResponseText = await Server.POSTwithRequest_Yaw();
+            string PitchResponseText = await Server.POSTwithRequest_Pitch();
+            string RollResponseText = await Server.POSTwithRequest_Roll();
             
 #endif
 #endif
             try
             {
 #if DYNAMIC
-                dynamic resposneJson = JObject.Parse(responseText);
-                UpdatePlot(timeStamp / 1000.0, (double)resposneJson.data);
-                dynamic resposneJson2 = JObject.Parse(responseText2);
-                UpdatePlot2(timeStamp / 1000.0, (double)resposneJson2.data);
-                dynamic resposneJson3 = JObject.Parse(responseText3);
-                UpdatePlot3(timeStamp / 1000.0, (double)resposneJson3.data);
-                dynamic resposneJson7 = JObject.Parse(responseText7);
-                UpdatePlot7(timeStamp / 1000.0, (double)resposneJson7.data);
+                dynamic HumidityResposneJson = JObject.Parse(HumidityResponseText);
+                UpdateHumidityPlot(timeStamp / 1000.0, (double)HumidityResposneJson.data);
+                
+                dynamic TemperatureResposneJson = JObject.Parse(TemperatureResponseText);
+                UpdateHumidityPlot(timeStamp / 1000.0, (double)TemperatureResposneJson.data);
+
+                dynamic PressureResposneJson = JObject.Parse(PressureResponseText);
+                UpdatePressurePlot(timeStamp / 1000.0, (double)PressureResposneJson.data);
+
+                dynamic YawResposneJson = JObject.Parse(YawResponseText);
+                UpdateYawPlott(timeStamp / 1000.0, (double)YawResposneJson.data);
+
+                dynamic PitchResposneJson = JObject.Parse(PitchResponseText);
+                UpdatePitchPlot(timeStamp / 1000.0, (double)PitchResposneJson.data);
+
+                dynamic RollResposneJson = JObject.Parse(RollResponseText);
+                UpdateRollPlot(timeStamp / 1000.0, (double)RollResposneJson.data);
                               
 #else
-                
-                ServerData resposneJson = JsonConvert.DeserializeObject<ServerData>(responseText);
-                UpdatePlot(timeStamp / 1000.0, resposneJson.data);
-                ServerData resposneJson2 = JsonConvert.DeserializeObject<ServerData>(responseText2);
-                UpdatePlot2(timeStamp / 1000.0, resposneJson2.data);
-                ServerData resposneJson3 = JsonConvert.DeserializeObject<ServerData>(responseText3);
-                UpdatePlot3(timeStamp / 1000.0, resposneJson3.data);
-                ServerData resposneJson7 = JsonConvert.DeserializeObject<ServerData>(responseText7);
-                UpdatePlot7(timeStamp / 1000.0, resposneJson7.data);
-                ServerData resposneJson8 = JsonConvert.DeserializeObject<ServerData>(responseText8);
-                UpdatePlot8(timeStamp / 1000.0, resposneJson8.data);
-                ServerData resposneJson9 = JsonConvert.DeserializeObject<ServerData>(responseText9);
-                UpdatePlot9(timeStamp / 1000.0, resposneJson9.data);
+
+                ServerData HumidityResposneJson = JsonConvert.DeserializeObject<ServerData>(HumidityResponseText);
+                UpdateHumidityPlot(timeStamp / 1000.0, HumidityResposneJson.data);
+                ServerData TemperatureResposneJson = JsonConvert.DeserializeObject<ServerData>(TemperatureResponseText);
+                UpdateTemperaturePlot(timeStamp / 1000.0, TemperatureResposneJson.data);
+                ServerData PressureResposneJson = JsonConvert.DeserializeObject<ServerData>(PressureResponseText);
+                UpdatePressurePlot(timeStamp / 1000.0, PressureResposneJson.data);
+                ServerData YawResposneJson = JsonConvert.DeserializeObject<ServerData>(YawResponseText);
+                UpdateYawPlot(timeStamp / 1000.0, YawResposneJson.data);
+                ServerData PitchResposneJson = JsonConvert.DeserializeObject<ServerData>(PitchResponseText);
+                UpdatePitchPlot(timeStamp / 1000.0, PitchResposneJson.data);
+                ServerData RollResposneJson = JsonConvert.DeserializeObject<ServerData>(RollResponseText);
+                UpdateRollPlot(timeStamp / 1000.0, RollResposneJson.data);
 #endif
             }
             catch (Exception e)
             {
                 Debug.WriteLine("JSON DATA ERROR");
-                Debug.WriteLine(responseText);
-                Debug.WriteLine(responseText2);
-                Debug.WriteLine(responseText3);
-                Debug.WriteLine(responseText7);
-                Debug.WriteLine(responseText8);
-                Debug.WriteLine(responseText9);
+                Debug.WriteLine(HumidityResponseText);
+                Debug.WriteLine(TemperatureResponseText);
+                Debug.WriteLine(PressureResponseText);
+                Debug.WriteLine(YawResponseText);
+                Debug.WriteLine(PitchResponseText);
+                Debug.WriteLine(RollResponseText);
                 Debug.WriteLine(e);
             }
 
@@ -500,13 +512,13 @@ namespace MultiViewApp.ViewModel
                 RequestTimer.Elapsed += new ElapsedEventHandler(RequestTimerElapsed);
                 RequestTimer.Enabled = true;
 
-                DataPlotModel.ResetAllAxes();
-                DataPlotModel2.ResetAllAxes(); //analogiczne dodatnie resetu dla drugiego plota
-                DataPlotModel3.ResetAllAxes();
+                humidityGraph.ResetAllAxes();
+                temperatureGraph.ResetAllAxes(); //analogiczne dodatnie resetu dla drugiego plota
+                pressureGraph.ResetAllAxes();
                //analogiczne dodatnie resetu dla drugiego plota
-                DataPlotModel7.ResetAllAxes(); //analogiczne dodatnie resetu dla drugiego plota
-                DataPlotModel8.ResetAllAxes(); //analogiczne dodatnie resetu dla drugiego plota
-                DataPlotModel9.ResetAllAxes(); //analogiczne dodatnie resetu dla drugiego plota
+                yawGraph.ResetAllAxes(); //analogiczne dodatnie resetu dla drugiego plota
+                pitchGraph.ResetAllAxes(); //analogiczne dodatnie resetu dla drugiego plota
+                rollGraph.ResetAllAxes(); //analogiczne dodatnie resetu dla drugiego plota
             }
         }
 

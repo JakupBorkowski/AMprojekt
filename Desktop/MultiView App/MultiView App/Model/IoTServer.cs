@@ -58,35 +58,35 @@ namespace MultiViewApp.Model
         /**
          * @brief obtaining the address of the data file from IoT server IP.
          */
-        private string GetFileUrl9()
+        private string GetFileUrl_Roll()
         {
             return "http://" + ip + ":" + port +"/chartdata_desktop6.json";
         }
         /**
          * @brief obtaining the address of the data file from IoT server IP.
          */
-        private string GetFileUrl8()
+        private string GetFileUrl_Pitch()
         {
             return "http://" + ip + ":" + port + "/chartdata_desktop5.json";
         }
         /**
          * @brief obtaining the address of the data file from IoT server IP.
          */
-        private string GetFileUrl7()
+        private string GetFileUrl_Yaw()
         {
             return "http://" + ip + ":" + port + "/chartdata_desktop4.json";
         }
         /**
          * @brief obtaining the address of the data file from IoT server IP.
          */
-        private string GetFileUrl()
+        private string GetFileUrl_Humidity()
         {
             return "http://" + ip + ":" + port + "/chartdata_desktop.json";
         }
         /**
          * @brief obtaining the address of the data file from IoT server IP.
          */
-        private string GetFileUrl2()
+        private string GetFileUrl_Temperature()
         {
             return "http://" + ip + ":" + port + "/chartdata_desktop2.json";
         }
@@ -94,7 +94,7 @@ namespace MultiViewApp.Model
         /**
           * @brief obtaining the address of the data file from IoT server IP.
           */
-        private string GetFileUrl3()
+        private string GetFileUrl_Pressure()
         {
             return "http://" + ip + ":" + port + "/chartdata_desktop3.json";
         }
@@ -111,7 +111,7 @@ namespace MultiViewApp.Model
         /**
          * @brief HTTP GET request using HttpClient
          */
-        public async Task<string> GETwithClient9()
+        public async Task<string> GETwithClient_Roll()
         {
             string responseText = null;
 
@@ -119,7 +119,7 @@ namespace MultiViewApp.Model
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    responseText = await client.GetStringAsync(GetFileUrl9());
+                    responseText = await client.GetStringAsync(GetFileUrl_Roll());
                 }
             }
             catch (Exception e)
@@ -133,7 +133,7 @@ namespace MultiViewApp.Model
         /**
          * @brief HTTP GET request using HttpClient
          */
-        public async Task<string> GETwithClient8()
+        public async Task<string> GETwithClient_Pitch()
         {
             string responseText = null;
 
@@ -141,7 +141,7 @@ namespace MultiViewApp.Model
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    responseText = await client.GetStringAsync(GetFileUrl8());
+                    responseText = await client.GetStringAsync(GetFileUrl_Pitch());
                 }
             }
             catch (Exception e)
@@ -155,7 +155,7 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP GET request using HttpClient
         */
-        public async Task<string> GETwithClient7()
+        public async Task<string> GETwithClient_Yaw()
         {
             string responseText = null;
 
@@ -163,7 +163,7 @@ namespace MultiViewApp.Model
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    responseText = await client.GetStringAsync(GetFileUrl7());
+                    responseText = await client.GetStringAsync(GetFileUrl_Yaw());
                 }
             }
             catch (Exception e)
@@ -177,7 +177,7 @@ namespace MultiViewApp.Model
         /**
           * @brief HTTP GET request using HttpClient
           */
-        public async Task<string> GETwithClient()
+        public async Task<string> GETwithClient_Humidity()
         {
             string responseText = null;
 
@@ -185,7 +185,7 @@ namespace MultiViewApp.Model
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    responseText = await client.GetStringAsync(GetFileUrl());
+                    responseText = await client.GetStringAsync(GetFileUrl_Humidity());
                 }
             }
             catch (Exception e)
@@ -199,7 +199,7 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP GET request using HttpClient
         */
-        public async Task<string> GETwithClient2()
+        public async Task<string> GETwithClient_Temperature()
         {
             string responseText = null;
 
@@ -207,7 +207,7 @@ namespace MultiViewApp.Model
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    responseText = await client.GetStringAsync(GetFileUrl2());
+                    responseText = await client.GetStringAsync(GetFileUrl_Temperature());
                 }
             }
             catch (Exception e)
@@ -222,7 +222,7 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP GET request using HttpClient
         */
-        public async Task<string> GETwithClient3()
+        public async Task<string> GETwithClient_Pressure()
         {
             string responseText = null;
 
@@ -230,7 +230,7 @@ namespace MultiViewApp.Model
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    responseText = await client.GetStringAsync(GetFileUrl3());
+                    responseText = await client.GetStringAsync(GetFileUrl_Pressure());
                 }
             }
             catch (Exception e)
@@ -246,7 +246,7 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP POST request using HttpClient
         */
-        public async Task<string> POSTwithClient9()
+        public async Task<string> POSTwithClient_Roll()
         {
             string responseText = null;
 
@@ -275,7 +275,7 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP POST request using HttpClient
         */
-        public async Task<string> POSTwithClient8()
+        public async Task<string> POSTwithClient_Pitch()
         {
             string responseText = null;
 
@@ -305,7 +305,7 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP POST request using HttpClient
         */
-        public async Task<string> POSTwithClient7()
+        public async Task<string> POSTwithClient_Yaw()
         {
             string responseText = null;
 
@@ -334,7 +334,7 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP POST request using HttpClient
         */
-        public async Task<string> POSTwithClient()
+        public async Task<string> POSTwithClient_Humidity()
         {
             string responseText = null;
 
@@ -363,7 +363,7 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP POST request using HttpClient
         */
-        public async Task<string> POSTwithClient2()
+        public async Task<string> POSTwithClient_Temperature()
         {
             string responseText = null;
 
@@ -392,7 +392,7 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP POST request using HttpClient
         */
-        public async Task<string> POSTwithClient3()
+        public async Task<string> POSTwithClient_Pressure()
         {
             string responseText = null;
 
@@ -421,13 +421,13 @@ namespace MultiViewApp.Model
         /**
           * @brief HTTP GET request using HttpWebRequest
           */
-        public async Task<string> GETwithRequest9()
+        public async Task<string> GETwithRequest_Roll()
         {
             string responseText = null;
 
             try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl9());
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl_Roll());
 
                 request.Method = "GET";
 
@@ -449,13 +449,13 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP GET request using HttpWebRequest
         */
-        public async Task<string> GETwithRequest8()
+        public async Task<string> GETwithRequest_Pitch()
         {
             string responseText = null;
 
             try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl8());
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl_Pitch());
 
                 request.Method = "GET";
 
@@ -477,13 +477,13 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP GET request using HttpWebRequest
         */
-        public async Task<string> GETwithRequest7()
+        public async Task<string> GETwithRequest_Yaw()
         {
             string responseText = null;
 
             try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl7());
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl_Yaw());
 
                 request.Method = "GET";
 
@@ -505,13 +505,13 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP GET request using HttpWebRequest
         */
-        public async Task<string> GETwithRequest()
+        public async Task<string> GETwithRequest_Humidity()
         {
             string responseText = null;
 
             try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl());
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl_Humidity());
 
                 request.Method = "GET";
 
@@ -533,13 +533,13 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP GET request using HttpWebRequest
         */
-        public async Task<string> GETwithRequest2()
+        public async Task<string> GETwithRequest_Temperature()
         {
             string responseText = null;
 
             try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl2());
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl_Temperature());
 
                 request.Method = "GET";
 
@@ -561,13 +561,13 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP GET request using HttpWebRequest
         */
-        public async Task<string> GETwithRequest3()
+        public async Task<string> GETwithRequest_Pressure()
         {
             string responseText = null;
 
             try
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl3());
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GetFileUrl_Pressure());
 
                 request.Method = "GET";
 
@@ -592,7 +592,7 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP POST request using HttpWebRequest
         */
-        public async Task<string> POSTwithRequest()
+        public async Task<string> POSTwithRequest_Humidity()
         {
             string responseText = null;
 
@@ -630,7 +630,7 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP POST request using HttpWebRequest
         */
-        public async Task<string> POSTwithRequest7()
+        public async Task<string> POSTwithRequest_Yaw()
         {
             string responseText = null;
 
@@ -668,7 +668,7 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP POST request using HttpWebRequest
         */
-        public async Task<string> POSTwithRequest8()
+        public async Task<string> POSTwithRequest_Pitch()
         {
             string responseText = null;
 
@@ -706,7 +706,7 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP POST request using HttpWebRequest
         */
-        public async Task<string> POSTwithRequest9()
+        public async Task<string> POSTwithRequest_Roll()
         {
             string responseText = null;
 
@@ -744,7 +744,7 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP POST request using HttpWebRequest
         */
-        public async Task<string> POSTwithRequest2()
+        public async Task<string> POSTwithRequest_Temperature()
         {
             string responseText = null;
 
@@ -782,7 +782,7 @@ namespace MultiViewApp.Model
         /**
         * @brief HTTP POST request using HttpWebRequest
         */
-        public async Task<string> POSTwithRequest3()
+        public async Task<string> POSTwithRequest_Pressure()
         {
             string responseText = null;
 
