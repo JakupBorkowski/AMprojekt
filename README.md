@@ -1,2 +1,2 @@
 # AMprojekt
-Desktop, Mobile, Web App
+Desktop RPi App
